@@ -7,6 +7,8 @@ import RegisterPage from "./pages/Register.jsx";
 import StartPage from "./pages/Start.jsx";
 
 function App() {
+  const test = <></>;
+
   const router = createBrowserRouter([
     {
       path: "/",
