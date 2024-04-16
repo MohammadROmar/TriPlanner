@@ -1,0 +1,39 @@
+#theme button {
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+#theme {
+  display: flex;
+  align-items: center;
+}
+
+#theme svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  padding: 0.1rem;
+  margin-top: 0.2rem;
+  border: 0.2rem solid #bdc8f4;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  vertical-align: center;
+}
+
+#theme--light svg {
+  border-radius: 0;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-left: none;
+}
+
+.active-theme {
+  background: #8ea2f3;
+}
+
+@media (min-width: 40rem) {
+  #theme svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}

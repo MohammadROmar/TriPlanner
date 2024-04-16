@@ -1,0 +1,44 @@
+.side-bar__item {
+  width: 100%;
+  padding-left: 1.5rem;
+  border-left: 0.3rem solid transparent;
+  opacity: 0.6;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.side-bar__item button {
+  color: #006eff;
+  font-size: 0.8rem;
+  padding: 0rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.side-bar__item:hover,
+.side-bar__item:active {
+  opacity: 1;
+  transform: translateX(5%);
+}
+
+.active-item {
+  border-left: 0.3rem solid var(--main-color);
+  background: var(--main-color__light);
+}
+
+.side-bar__item svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+svg path {
+  stroke: black;
+}
+
+.side-bar__item:last-child {
+  margin-top: auto;
+  margin-bottom: 2rem;
+}

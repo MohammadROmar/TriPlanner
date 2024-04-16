@@ -1,0 +1,79 @@
+:root {
+  --main-color: #3414cf;
+  --main-color__light: #327af0;
+  --secondery-color: #f3f3f3;
+  --error: #ea6464;
+}
+
+@font-face {
+  font-family: "Ubuntu-Bold";
+  src: url("./assets/fonts/Ubuntu-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu-Light";
+  src: url("./assets/fonts/Ubuntu-Light.ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("./assets/fonts/Ubuntu-Regular.ttf");
+}
+
+* {
+  margin: 0;
+  font-family: Ubuntu, sans-serif;
+  box-sizing: border-box;
+}
+
+.active {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  overflow: auto;
+}
+
+button {
+  border: none;
+  background: none;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+#content {
+  margin: 0.5rem;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 4rem);
+  height: calc(100dvh - 4rem);
+}
+
+#content.active {
+  overflow-y: hidden;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (min-width: 40rem) {
+  #content {
+    margin-left: 16rem;
+    margin-top: 3.5rem;
+  }
+
+  #content.hidden {
+    display: flex;
+    margin-left: 0.5rem;
+  }
+}
