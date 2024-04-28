@@ -1,0 +1,49 @@
+.swiper_container {
+  position: relative;
+  width: 100vw;
+}
+
+.swiper-slide {
+  width: 50vw;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-slide img {
+  position: absolute;
+  top: 0;
+  width: 80vw;
+  height: 60vh;
+  border-radius: 2rem;
+  object-fit: cover;
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none;
+}
+
+.slider-controler {
+}
+
+swiper-button-next,
+swiper-button-prev {
+}
+
+.swiper-pagination-bullet {
+  width: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  border-radius: 0.3rem;
+  width: 1rem;
+  background: var(--main-color__light);
+}
+
+.slider-controler .slider-arrow::after {
+  content: "";
+}

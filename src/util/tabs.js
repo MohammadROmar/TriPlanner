@@ -15,7 +15,7 @@ const TABS = [
     // onClick: () => {},
   },
   {
-    icon: SettingsIcon ,
+    icon: SettingsIcon,
     title: "Settings"
     // onClick: () => {},
   },
@@ -27,3 +27,16 @@ const TABS = [
 ];
 
 export default TABS;
+
+export const START_TABS = [
+  {
+    title: "Services",
+    // icon: ,
+    id: "services"
+  },
+  {
+    title: "Offers",
+    // icon: ,
+    id: "offers"
+  }
+];

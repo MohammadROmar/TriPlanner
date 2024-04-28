@@ -1,0 +1,47 @@
+#header-nav {
+  display: none;
+}
+
+#header-nav .nav-list {
+  list-style: none;
+  padding: 0;
+}
+
+#cta {
+  display: inline-block !important;
+  color: white;
+  font-size: 0.6rem;
+  margin: 0.4rem;
+  font-family: "Ubuntu-Bold";
+  padding: 0.3rem 0.6rem;
+  background: linear-gradient(
+    45deg,
+    var(--main-color__light),
+    var(--main-color),
+    var(--main-color__light)
+  );
+  border-radius: 0.3rem;
+  background-size: 400% 400%;
+  box-shadow: 0.1rem 0.1rem 0.3rem 0 #00000099;
+  animation: color 8s infinite;
+}
+
+@keyframes color {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@media (min-width: 40rem) {
+  #header-nav,
+  #header-nav .nav-list {
+    display: flex;
+    align-items: center;
+  }
+}

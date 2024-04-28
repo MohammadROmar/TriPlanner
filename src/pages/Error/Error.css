@@ -1,0 +1,18 @@
+#error {
+  height: 100vh;
+  height: 100dvh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#error img {
+  width: 15rem;
+}
+
+#error h1 {
+  color: #ec9191;
+  margin: 1rem;
+}

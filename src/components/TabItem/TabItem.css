@@ -2,8 +2,6 @@
   width: 100%;
   padding-left: 1.5rem;
   border-left: 0.3rem solid transparent;
-  opacity: 0.6;
-  transition: transform 0.2s, opacity 0.2s;
 }
 
 .side-bar__item button {
@@ -16,12 +14,6 @@
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.side-bar__item:hover,
-.side-bar__item:active {
-  opacity: 1;
-  transform: translateX(5%);
 }
 
 .active-item {

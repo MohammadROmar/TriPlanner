@@ -14,7 +14,9 @@
   z-index: 5;
   opacity: 0;
   transform: translateX(-100%);
-  transition: opacity 0.4s, transform 0.4s;
+  transition:
+    opacity 0.4s,
+    transform 0.4s;
 }
 
 #toggle-mobile-drawer {
@@ -33,9 +35,10 @@
 
 @media (min-width: 40rem) {
   .side-bar {
-    opacity: 1;
+    display: none;
+    /*opacity: 1;
     transform: translateX(0%);
-    z-index: 2;
+    z-index: 2;*/
   }
 
   #side-bar__items {

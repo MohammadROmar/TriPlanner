@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { backdropActions } from "../../../store/backdrop.js";
+import { backdropActions } from "../../../store/slices/backdrop.js";
 import "./Backdrop.css";
 
 function Backdrop() {
