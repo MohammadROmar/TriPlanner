@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export default function AnimatedListItem({ children }) {
+export default function AnimatedListItem({ children, ...props }) {
   return (
     <motion.li
       variants={{
@@ -10,6 +10,7 @@ export default function AnimatedListItem({ children }) {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 1.1 }}
       transition={{ type: "spring", stiffness: 300 }}
+      {...props}
     >
       {children}
     </motion.li>

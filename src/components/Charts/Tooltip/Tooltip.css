@@ -1,0 +1,28 @@
+.tooltip {
+  padding: 0.5rem;
+  background: var(--color-body);
+  border: var(--color-primary__light) solid 0.1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.3rem 0 #b9e7ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tooltip-label {
+  padding: 0 0.5rem 0.5rem 0;
+  color: var(--color-text);
+  font-size: 1.2rem;
+}
+
+.tooltip-first {
+  padding: 0.2rem 0.5rem;
+}
+
+.tooltip-second {
+  padding: 0.2rem 0.5rem;
+}
+
+.tooltip span {
+  font-size: 1.1rem;
+}

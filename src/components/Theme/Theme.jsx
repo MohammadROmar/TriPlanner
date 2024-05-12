@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
-import DarkModeIcon from "../../assets/icons/DarkModeIcon.jsx";
-import LightModeIcon from "../../assets/icons/LightModeIcon.jsx";
+import DarkModeIcon from "../../assets/icons/DarkMode.jsx";
+import LightModeIcon from "../../assets/icons/LightMode.jsx";
 
 import { themeActions } from "../../store/slices/theme.js";
 import "./Theme.css";
@@ -10,6 +11,7 @@ import "./Theme.css";
 export default function Theme() {
   const dispatch = useDispatch();
   const activeTheme = useSelector(state => state.theme.activeTheme);
+  const location = useLocation();
 
   const isDark = activeTheme === "DARK";
 
@@ -20,21 +22,25 @@ export default function Theme() {
   }
 
   return (
-    <div id="theme">
-      <motion.button
-        layoutId="theme-indicator"
+    <motion.div
+      key={`theme ${location.pathname.includes("welcome")}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      id="theme"
+    >
+      <button
         className={isDark ? "active" : ""}
         onClick={() => toggleTheme("DARK")}
       >
-        <DarkModeIcon />
-      </motion.button>
-      <motion.button
-        layoutId="theme-indicator"
+        <DarkModeIcon isActive={isDark} />
+      </button>
+      <button
         className={isDark ? "" : "active"}
         onClick={() => toggleTheme("LIGHT")}
       >
-        <LightModeIcon />
-      </motion.button>
-    </div>
+        <LightModeIcon isActive={!isDark} />
+      </button>
+    </motion.div>
   );
 }

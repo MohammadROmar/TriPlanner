@@ -1,73 +1,81 @@
-#start-container {
-}
-
-#over-view {
+#overview {
   position: relative;
-  width: 100vw;
-  height: 91.3vh;
-  object-fit: cover;
-  background: url("palmyra.jpg") center/cover no-repeat border-box;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
-#start-container h1 {
+.window {
+  position: relative;
+  width: 70vw;
+  height: 60vh;
+  left: 20%;
+  top: 15%;
+  border-radius: 1rem;
+  border: 0.15rem solid var(--color-primary);
+}
+
+#overview h1 {
   position: absolute;
-  bottom: 3rem;
+  bottom: 40%;
   left: 0.5rem;
-  font-size: 1rem;
+  padding: 0.2rem;
+  font-size: 2.5rem;
+  letter-spacing: 0.1rem;
+  color: var(--color-text);
+  font-family: Ubuntu-Bold, sans-serif;
+  z-index: 2;
 }
 
-#start-container p {
+#overview span {
+  background-clip: text;
+  background: url("/syria_flag1.jpg") center / cover no-repeat border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.image-container {
   position: absolute;
-  left: 1rem;
-  bottom: 1rem;
+  padding: 0.05rem;
+  border: var(--color-primary) 0.1rem solid;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem 0.1rem var(--color-primary__light);
+  z-index: 1;
 }
 
-#services {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+#services h2 {
+  text-align: center;
+  padding: 1rem;
+  font-family: Ubuntu-Bold, sans-serif;
+  background-clip: text;
+  background: var(--linear-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #services__list {
+  list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-#footer {
-  width: 100vw;
-  color: #c1b6efc5;
-  background: #151515c5;
 }
 
 @media (min-width: 40rem) {
-  #over-view {
-    height: 98vh;
+  .window {
+    width: 60vw;
+    left: 30%;
   }
 
-  #over-view h1 {
-    font-size: 1.5rem;
+  .image-container {
+    border-radius: 1rem;
+  }
+
+  .image-container:last-of-type {
+    width: 60% !important;
   }
 
   #services__list {
     flex-direction: row;
-  }
-}
-
-@media (min-width: 50rem) {
-  #services__list {
-    gap: 2rem;
-  }
-}
-
-@media (min-width: 60rem) {
-  #services__list {
-    gap: 4rem;
   }
 }

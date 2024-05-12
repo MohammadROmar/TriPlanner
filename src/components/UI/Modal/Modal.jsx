@@ -3,7 +3,21 @@ import { createPortal } from "react-dom";
 
 import "./Modal.css";
 
-const Modal = forwardRef(function Modal({ title, children }, ref) {
+const modalColors = {
+  normal: {
+    text: "var(--color-neuter)",
+    background: "var(--color-neuter-background)"
+  },
+  alert: {
+    text: "var(--color-danger)",
+    background: "var(--color-danger-background)"
+  }
+};
+
+const Modal = forwardRef(function Modal(
+  { title, onConfirm, children, isAlert },
+  ref
+) {
   const dialog = useRef();
 
   useImperativeHandle(ref, () => {
@@ -14,11 +28,26 @@ const Modal = forwardRef(function Modal({ title, children }, ref) {
     };
   });
 
+  const colors = isAlert ? modalColors.alert : modalColors.normal;
+
   return createPortal(
-    <dialog ref={dialog}>
-      <h2>{title}</h2>
-      <form method="dialog">
-        <button>Ok</button>
+    <dialog ref={dialog} className="modal">
+      <h2 className="modal-title" style={{ color: colors.text }}>
+        {title}
+      </h2>
+      {children}
+      <form method="dialog" className="modal-form">
+        <button>Cancel</button>
+        <button
+          className="action"
+          onClick={onConfirm}
+          style={{
+            color: colors.text,
+            background: colors.background
+          }}
+        >
+          Confirm
+        </button>
       </form>
     </dialog>,
     document.getElementById("modal")
@@ -26,26 +55,3 @@ const Modal = forwardRef(function Modal({ title, children }, ref) {
 });
 
 export default Modal;
-
-/*import { useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
-
-export default function Modal({ children, onClose }) {
-  const dialog = useRef();
-
-  useEffect(() => {
-    const modal = dialog.current;
-    modal.showModal();
-
-    return () => {
-      modal.close();
-    };
-  }, []);
-
-  return createPortal(
-    <dialog className="modal" ref={dialog} onClose={onClose}>
-      {children}
-    </dialog>,
-    document.getElementById("modal")
-  );
-}*/

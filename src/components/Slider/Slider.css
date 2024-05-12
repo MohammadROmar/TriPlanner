@@ -41,7 +41,7 @@ swiper-button-prev {
 .swiper-pagination .swiper-pagination-bullet-active {
   border-radius: 0.3rem;
   width: 1rem;
-  background: var(--main-color__light);
+  background: var(--color-primary__light);
 }
 
 .slider-controler .slider-arrow::after {

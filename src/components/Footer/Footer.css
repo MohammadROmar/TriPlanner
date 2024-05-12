@@ -1,0 +1,35 @@
+#footer {
+  padding-top: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.85);
+  grid-area: footer;
+}
+
+#footer p {
+  margin: 0.3rem 1rem;
+}
+
+#contact-methods {
+  width: 15rem;
+  list-style: none;
+  margin: 0.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-method svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.contact-method svg path {
+  fill: rgba(255, 255, 255, 0.6);
+}
+
+#footer h4 {
+  padding: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.3rem;
+  letter-spacing: 0.1rem;
+}

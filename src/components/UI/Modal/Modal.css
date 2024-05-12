@@ -1,0 +1,51 @@
+.modal {
+  width: 30rem;
+  max-width: 90%;
+  margin: auto;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--color-body);
+  border: none;
+}
+
+.modal[open] {
+  animation: slide-in-from-bottom 0.3s ease-out;
+}
+
+.modal-title {
+  color: var(--color-danger);
+}
+
+.modal p {
+  margin: 1rem;
+  color: var(--color-text);
+}
+
+.modal-form {
+  text-align: right;
+}
+
+.modal .action {
+  padding: 0.25rem 0.5rem;
+  color: var(--color-danger);
+  border-radius: 0.25rem;
+  background: var(--color-danger-background);
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+@keyframes slide-in-from-bottom {
+  0% {
+    transform: translateY(30%);
+    opacity: 0;
+  }
+  95% {
+    transform: translateY(-1%);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

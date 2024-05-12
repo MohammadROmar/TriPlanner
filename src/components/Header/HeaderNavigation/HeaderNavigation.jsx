@@ -1,14 +1,17 @@
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import AnimatedListItem from "../../UI/Motion/AnimatedListItem.jsx";
 import HeaderItem from "../HeaderItem/HeaderItem.jsx";
-import TABS from "../../../util/tabs.js";
+import { authActions } from "../../../store/slices/auth.js";
+import TABS from "../../../data/tabs.js";
 import "./HeaderNavigation.css";
 
 export default function HeaderNavigation() {
+  const navigate = useNavigate();
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const dispatch = useDispatch(authActions.login);
 
   return (
     <nav id="header-nav">
@@ -19,17 +22,20 @@ export default function HeaderNavigation() {
         animate="animate"
         className="nav-list"
       >
-        {TABS.map(tab => (
-          <HeaderItem key={tab.title} title={tab.title} />
-        ))}
-        {!isAuthenticated && (
-          <AnimatedListItem>
-            <button id="cta">
-              <NavLink to="/register">Get Started</NavLink>
-            </button>
-          </AnimatedListItem>
-        )}
+        {isAuthenticated &&
+          TABS.map(tab => <HeaderItem key={tab.title} title={tab.title} />)}
       </motion.ul>
+      {!isAuthenticated && (
+        <button
+          id="cta"
+          onClick={() => {
+            dispatch(authActions.login());
+            navigate("/");
+          }}
+        >
+          Get Started
+        </button>
+      )}
     </nav>
   );
 }

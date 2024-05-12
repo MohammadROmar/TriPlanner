@@ -1,8 +1,42 @@
 :root {
-  --main-color: #3414cf;
-  --main-color__light: #327af0;
-  --secondery-color: #f3f3f3;
-  --error: #ea6464;
+  --color-primary: #3414cf;
+  --color-primary__light: #327af0;
+  --color-background: #fff;
+  --color-body: #ededed;
+  --color-text: var(--color-primary__light);
+
+  --color-success-background: #dcfce7;
+  --color-success: #41f1b6;
+  --color-danger-background: #ffe2e6;
+  --color-danger: #ff7782;
+  --color-warning-background: #fff4de;
+  --color-warning: #ffbb55;
+  --color-neuter-background: #d5dcfc;
+  --color-neuter: #6f77ed;
+  --color-neuter2-background: #f4e8fe;
+  --color-neuter2: #b588e7;
+  --color-card: #fff;
+
+  --linear-gradient: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary__light) 60%
+  );
+
+  --color-border: rgba(0, 0, 0, 0.2);
+
+  --box-shadow: 0 0 0.8rem 0 var(--color-primary__light);
+}
+
+#dark {
+  --color-text: #ccc;
+  --color-background: #2a2a2a;
+  --color-body: #333;
+  --color-card: #2a2a2a;
+
+  --color-border: rgba(255, 255, 255, 0.2);
+
+  --box-shadow: 0 0 0.8rem 0 var(--color-primary__light);
 }
 
 @font-face {
@@ -22,8 +56,10 @@
 
 * {
   margin: 0;
+  padding: 0;
   font-family: Ubuntu, sans-serif;
   box-sizing: border-box;
+  transition: background-color 0.3s;
 }
 
 .active {
@@ -39,9 +75,20 @@
   text-align: center;
 }
 
+.danger {
+  color: var(--color-danger);
+}
+
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   overflow: auto;
   overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
@@ -51,14 +98,30 @@ button {
   cursor: pointer;
 }
 
+#root {
+  height: 100%;
+}
+
+.App {
+  width: 100%;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 2.4rem auto 11.5rem;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
 #content {
-  margin: 0.5rem;
-  margin-top: 2rem;
+  position: relative;
+  padding: 0.5rem;
+  padding-top: 0.6rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: calc(100vh - 3rem);
-  height: calc(100dvh - 3rem);
+  background: var(--color-body);
+  transition: all 0.3s;
+  grid-area: main;
 }
 
 #content.active {
@@ -66,17 +129,19 @@ button {
 }
 
 a {
-  color: white;
   text-decoration: none;
 }
 
 @media (min-width: 40rem) {
-  /*#content {
-    margin-left: 16rem;
-  } */
-
-  #content.hidden {
-    display: flex;
-    margin-left: 0.5rem;
+  .App {
+    grid-template-columns: 15rem auto;
+    grid-template-areas:
+      "header header"
+      "sidebar main"
+      "sidebar footer";
   }
+
+  /*#content.hidden {
+    display: flex;
+  }*/
 }

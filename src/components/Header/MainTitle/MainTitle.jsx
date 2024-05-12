@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 
-import MenuIcon from "../../../assets/icons/MenuIcon.jsx";
+import MenuIcon from "../../../assets/icons/Menu.jsx";
 import { backdropActions } from "../../../store/slices/backdrop.js";
 import logoImg from "/logo.png";
 import "./MainTitle.css";

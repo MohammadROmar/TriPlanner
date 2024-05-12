@@ -1,29 +1,14 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import RootLayout from "./pages/Root.jsx";
-import ErrorPage from "./pages/Error/Error.jsx";
-import HomePage from "./pages/Home.jsx";
-import RegisterPage from "./pages/Register.jsx";
-import StartPage from "./pages/Start/Start.jsx";
+import Router from "./router/Router.jsx";
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <RootLayout />,
-      errorElement: <ErrorPage />,
-      children: [
-        { index: true, element: <HomePage /> },
-        { path: "start", element: <StartPage /> },
-        { path: "register", element: <RegisterPage /> }
-      ]
-    }
-  ]);
+  const theme = useSelector(state => state.theme.activeTheme);
 
   return (
-    <RouterProvider router={router}>
-      <RootLayout />
-    </RouterProvider>
+    <div id={theme === "DARK" ? "dark" : "light"} className="App">
+      <Router />
+    </div>
   );
 }
 

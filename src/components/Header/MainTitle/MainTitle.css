@@ -13,11 +13,7 @@
   font-size: 1rem;
   font-family: "Ubuntu-Bold", sans-serif;
   background-clip: text;
-  background: linear-gradient(
-    135deg,
-    var(--main-color),
-    var(--main-color__light) 60%
-  );
+  background: var(--linear-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -26,7 +22,7 @@
   font-size: 1rem;
   margin: 0 0.5rem;
   padding: 0;
-  color: var(--main-color);
+  color: var(--color-primary);
 }
 
 #side-bar__toggle svg {
@@ -35,7 +31,7 @@
 }
 
 #side-bar__toggle svg path {
-  stroke: var(--main-color);
+  stroke: var(--color-primary);
 }
 
 @media (min-width: 40rem) {
