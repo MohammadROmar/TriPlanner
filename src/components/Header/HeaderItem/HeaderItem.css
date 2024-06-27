@@ -1,3 +1,13 @@
-.nav-item .navigation {
+.header-navigation {
+  padding: 0;
+  margin: 0.5rem;
   color: var(--color-primary__light);
+}
+
+.header-navigation.active {
+  padding: 0;
+  background: none;
+  /* text-shadow: 0.1rem 0.2rem 0.3rem black; */
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
 }

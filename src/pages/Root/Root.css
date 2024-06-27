@@ -1,0 +1,18 @@
+#content {
+  position: relative;
+  padding: 0.5rem;
+  padding-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-body);
+  transition: all 0.3s;
+  grid-area: main;
+}
+
+#content.active {
+  overflow-y: hidden;
+}
+
+#root-page {
+  height: 100%;
+}

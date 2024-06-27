@@ -42,7 +42,7 @@
   z-index: 1;
 }
 
-#services h2 {
+#our-services h2 {
   text-align: center;
   padding: 1rem;
   font-family: Ubuntu-Bold, sans-serif;
@@ -52,7 +52,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-#services__list {
+#our-services__list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -75,7 +75,7 @@
     width: 60% !important;
   }
 
-  #services__list {
+  #our-services__list {
     flex-direction: row;
   }
 }

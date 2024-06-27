@@ -1,7 +1,8 @@
+import { v4 } from "uuid";
+
 import AreaChart from "../../components/Charts/AreaChart.jsx";
 import BarChart from "../../components/Charts/BarChart.jsx";
 import LineChart from "../../components/Charts/LineChart.jsx";
-import PieChart from "../../components/Charts/PieChart.jsx";
 import { statistics, newCustomers } from "../../data/dummy_data.js";
 import { cardColors, chartColors } from "../../data/colors.js";
 import "./Dashboard.css";

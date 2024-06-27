@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import AnimatedListItem from "../../UI/Motion/AnimatedListItem.jsx";
 import HeaderItem from "../HeaderItem/HeaderItem.jsx";
+import LogoutItem from "../../LogoutItem/LogoutItem.jsx";
 import { authActions } from "../../../store/slices/auth.js";
 import TABS from "../../../data/tabs.js";
 import "./HeaderNavigation.css";
@@ -22,20 +22,9 @@ export default function HeaderNavigation() {
         animate="animate"
         className="nav-list"
       >
-        {isAuthenticated &&
-          TABS.map(tab => <HeaderItem key={tab.title} title={tab.title} />)}
+        {TABS.map(tab => <HeaderItem key={tab.title} to={tab.to} title={tab.title} />)}
+        <LogoutItem type="header" />
       </motion.ul>
-      {!isAuthenticated && (
-        <button
-          id="cta"
-          onClick={() => {
-            dispatch(authActions.login());
-            navigate("/");
-          }}
-        >
-          Get Started
-        </button>
-      )}
     </nav>
   );
 }

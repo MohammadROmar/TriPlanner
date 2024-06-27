@@ -1,4 +1,4 @@
-.service {
+.our-service {
   position: relative;
   height: 20rem;
   margin: 0.5rem 0;
@@ -7,7 +7,7 @@
   /* box-shadow: var(--box-shadow); */
 }
 
-.service-description {
+.our-service-description {
   position: absolute;
   top: 80%;
   left: 0.5rem;
@@ -16,39 +16,39 @@
   color: white;
 }
 
-.service-description h3 {
+.our-service-description h3 {
   letter-spacing: 0.1rem;
 }
 
-.service-description p {
+.our-service-description p {
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.7rem;
 }
 
 @media (min-width: 40rem) {
-  .service {
+  .our-service {
     width: 12rem;
     margin: 0.5rem;
   }
 
-  .service-description {
+  .our-service-description {
     top: 68%;
   }
 }
 
 @media (min-width: 50rem) {
-  .service {
+  .our-service {
     width: 14rem;
     margin: 1rem;
   }
 
-  .service-description {
+  .our-service-description {
     top: 73%;
   }
 }
 
 @media (min-width: 60rem) {
-  .service {
+  .our-service {
     width: 17rem;
   }
 }

@@ -10,7 +10,7 @@ export default function Service({ service }) {
       linear-gradient(
         to top, rgba(0, 0, 0, 01),
         transparent 60%
-      ) , url(${image}) center/cover no-repeat border-box`
+      ) , url(${image}) center/cover no-repeat border-box`,
   };
 
   return (
@@ -19,10 +19,10 @@ export default function Service({ service }) {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 1.05 }}
       transition={{ type: "spring" }}
-      className="service"
+      className="our-service"
       style={cssStyle}
     >
-      <div className="service-description">
+      <div className="our-service-description">
         <h3>{title}</h3>
         <p>{description}</p>
       </div>

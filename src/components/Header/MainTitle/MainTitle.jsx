@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import MenuIcon from "../../../assets/icons/Menu.jsx";
@@ -18,8 +19,10 @@ export default function MainTitle() {
       >
         <MenuIcon />
       </button>
-      <img src={logoImg} alt="" />
-      <h1>TriPlanner</h1>
+      <NavLink to={isAuthenticated ? "/" : "/welcome"} id="nav-home">
+        <img src={logoImg} alt="" />
+        <h1>TriPlanner</h1>
+      </NavLink>
     </div>
   );
 }

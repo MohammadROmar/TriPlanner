@@ -3,7 +3,7 @@
   --color-primary__light: #327af0;
   --color-background: #fff;
   --color-body: #ededed;
-  --color-text: var(--color-primary__light);
+  --color-text: #000000b4;
 
   --color-success-background: #dcfce7;
   --color-success: #41f1b6;
@@ -113,35 +113,16 @@ button {
     "footer";
 }
 
-#content {
-  position: relative;
-  padding: 0.5rem;
-  padding-top: 0.6rem;
-  display: flex;
-  flex-direction: column;
-  background: var(--color-body);
-  transition: all 0.3s;
-  grid-area: main;
-}
-
-#content.active {
-  overflow-y: hidden;
-}
-
 a {
   text-decoration: none;
 }
 
 @media (min-width: 40rem) {
-  .App {
+  /*.App {
     grid-template-columns: 15rem auto;
     grid-template-areas:
       "header header"
       "sidebar main"
       "sidebar footer";
-  }
-
-  /*#content.hidden {
-    display: flex;
   }*/
 }

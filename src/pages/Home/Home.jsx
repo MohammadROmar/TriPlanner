@@ -2,13 +2,15 @@ import { useRef } from "react";
 
 import Modal from "../../components/UI/Modal/Modal.jsx";
 import SearchIcon from "../../assets/icons/Search.jsx";
+import CovernoratesPage from "../Covernorates/Covernorates.jsx";
 import filterImg from "../../assets/images/filter.png";
 import "./Home.css";
+import { Outlet } from "react-router-dom";
 
 const colors = {
   title: "var(--color-neuter)",
   text: "var(--color-success)",
-  background: "var(--color-success-background)"
+  background: "var(--color-success-background)",
 };
 
 export default function HomePage() {
@@ -17,7 +19,7 @@ export default function HomePage() {
   function handleFilters() {}
 
   return (
-    <>
+    <div id="home-page">
       <Modal ref={dialog} title="Filters" onConfirm={handleFilters} />
       <div id="search">
         <div id="search-bar-container">
@@ -28,7 +30,7 @@ export default function HomePage() {
           <img src={filterImg} alt="Filter icon" />
         </button>
       </div>
-      <div id="list-items..."></div>
-    </>
+      <Outlet />
+    </div>
   );
 }

@@ -25,6 +25,10 @@
   color: var(--color-primary);
 }
 
+#nav-home {
+  display: flex;
+}
+
 #side-bar__toggle svg {
   width: 1.2rem;
   height: 1.2rem;

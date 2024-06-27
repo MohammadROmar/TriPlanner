@@ -1,10 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import Service from "../../components/Service/Service.jsx";
-import AnimatedListItem from "../../components/UI/Motion/AnimatedListItem.jsx";
 
 import { SERVICES } from "../../data/services.js";
-import logoImg from "/logo.png";
 import aleppoCastleImg from "/aleppo_castle.jpg";
 import fourSeasonsImg from "/four_seasons.jpg";
 import restaurantImg from "/restaurant.jpg";
@@ -31,7 +29,7 @@ export default function StartPage() {
   );
   const windowOpacity = useTransform(scrollY, [0, 150, 300], [1, 0.25, 0]);
 
-  const services = SERVICES.map(service => (
+  const services = SERVICES.map((service) => (
     <Service key={service.title} service={service} />
   ));
 
@@ -43,14 +41,14 @@ export default function StartPage() {
             className="window"
             style={{
               y: windowY,
-              opacity: windowOpacity
+              opacity: windowOpacity,
             }}
           />
           <motion.h1
             style={{
               x: textX,
               y: textY,
-              scale: textScale
+              scale: textScale,
             }}
           >
             Explore <span>Syria</span>
@@ -66,7 +64,7 @@ export default function StartPage() {
               width: "40%",
               height: "35%",
               background: `url(${aleppoCastleImg}) top /cover no-repeat border-box`,
-              opacity: imagesOpacity
+              opacity: imagesOpacity,
             }}
           />
           <motion.div
@@ -78,7 +76,7 @@ export default function StartPage() {
               width: "45%",
               height: "40%",
               background: `url(${restaurantImg}) center /cover no-repeat border-box`,
-              opacity: imagesOpacity
+              opacity: imagesOpacity,
             }}
           />
           <motion.div
@@ -90,14 +88,14 @@ export default function StartPage() {
               width: "80%",
               height: "35%",
               background: `url(${fourSeasonsImg}) center /cover no-repeat border-box`,
-              opacity: imagesOpacity
+              opacity: imagesOpacity,
             }}
           />
         </section>
       </div>
-      <section id="services">
+      <section id="our-services">
         <h2>What we offer</h2>
-        <ul id="services__list">{services}</ul>
+        <ul id="our-services__list">{services}</ul>
       </section>
     </>
   );
