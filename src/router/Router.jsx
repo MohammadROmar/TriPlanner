@@ -10,7 +10,7 @@ import SettingsPage from "../pages/Settings.jsx";
 import FavoritePage from "../pages/Favorite.jsx";
 import LogoutPage from "../pages/Logout.jsx";
 import ServicesPage from "../pages/Services/Services.jsx";
-import CovernoratesPage from "../pages/Covernorates/Covernorates.jsx";
+import GovernoratesPage from "../pages/Governorates/Governorates.jsx";
 import SubServicesPage from "../pages/SubServices/SubServices.jsx";
 import DetailsPage from "../pages/Details/Details.jsx";
 
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         path: "",
         element: <HomePage />,
         children: [
-          { path: "", element: <CovernoratesPage /> },
+          { path: "", element: <GovernoratesPage /> },
           { path: ":covId", element: <ServicesPage /> },
           { path: ":covId/:serviceName", element: <SubServicesPage /> },
           {

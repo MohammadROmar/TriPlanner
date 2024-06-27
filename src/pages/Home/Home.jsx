@@ -2,7 +2,6 @@ import { useRef } from "react";
 
 import Modal from "../../components/UI/Modal/Modal.jsx";
 import SearchIcon from "../../assets/icons/Search.jsx";
-import CovernoratesPage from "../Covernorates/Covernorates.jsx";
 import filterImg from "../../assets/images/filter.png";
 import "./Home.css";
 import { Outlet } from "react-router-dom";

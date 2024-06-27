@@ -17,6 +17,16 @@
   display: grid;
 }
 
+.details_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details_title span {
+  color: var(--color-primary__light);
+}
+
 .details p {
   color: var(--color-text);
   margin: 0.25rem;
@@ -31,6 +41,12 @@
 .details-location {
   display: flex;
   align-items: center;
+}
+
+.details-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .details-actions {

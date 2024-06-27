@@ -133,7 +133,7 @@ export const dummySubServices = [
     category: "",
   },
 ];
-export const covernorates = [
+export const governorates = [
   { id: "1", name: "Damacscus" },
   { id: "2", name: "Aleppo" },
   { id: "3", name: "Homs" },

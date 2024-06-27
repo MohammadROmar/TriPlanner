@@ -5,6 +5,7 @@ import Modal from "../../components/UI/Modal/Modal.jsx";
 import LocationIcon from "../../assets/icons/Location.jsx";
 import hotelImg from "../../assets/images/hotel_room.jpg";
 import "./Details.css";
+import RatingBar from "../../components/RatingBar/RatingBar.jsx";
 
 // export default function DetailsPage({ service }) {
 export default function DetailsPage() {
@@ -42,11 +43,18 @@ export default function DetailsPage() {
         <div className="details">
           <div>
             <h2 className="details__name heading">{service.name}</h2>
-            <div className="details-location">
-              <LocationIcon />
-              <p>{service.address}</p>
+            <div className="details_title">
+              <div className="details-location">
+                <LocationIcon />
+                <p>{service.address}</p>
+              </div>
+              <p>
+                {service.cost} <span>S.P</span>
+              </p>
             </div>
-            <p>{service.rating}</p>
+            <div className="details-rating">
+              <RatingBar rating={4.5} />
+            </div>
             <h3 className="details-description heading">Description</h3>
             <p>{service.description}</p>
           </div>
