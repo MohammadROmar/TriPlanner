@@ -70,6 +70,10 @@
   background-color: var(--color-warning);
 }
 
+.details .detail__light {
+  opacity: 0.8;
+}
+
 @media (min-width: 40rem) {
   .details-page {
     display: grid;

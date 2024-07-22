@@ -6,18 +6,15 @@ import "./RatingBar.css";
 export default function RatingBar({ rating }) {
   const rate = rating;
   const stars = [];
-  let totalRating = 5;
 
-  while (totalRating > 0) {
-    if (rating > 1) {
+  for (let i = 0; i < 5; i++, rating--) {
+    if (rating >= 1) {
       stars.push(<Star isCompleted />);
     } else if (rating >= 0.5 && rating < 1) {
       stars.push(<HalfStar />);
     } else {
       stars.push(<Star />);
     }
-    rating--;
-    totalRating--;
   }
 
   return (

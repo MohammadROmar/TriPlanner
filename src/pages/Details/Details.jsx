@@ -6,13 +6,16 @@ import LocationIcon from "../../assets/icons/Location.jsx";
 import hotelImg from "../../assets/images/hotel_room.jpg";
 import "./Details.css";
 import RatingBar from "../../components/RatingBar/RatingBar.jsx";
+import Description from "./Description/Description.jsx";
+import Features from "./Features/Features.jsx";
+import ContactMethods from "./ContactMethods/ContactMethods.jsx";
 
 // export default function DetailsPage({ service }) {
 export default function DetailsPage() {
   const dialog = useRef();
   const location = useLocation();
   const service = location.state.service;
-  const subService = location.state.subService;
+  const subservice = location.state.subservice;
 
   function confirmDeletion() {}
 
@@ -37,7 +40,7 @@ export default function DetailsPage() {
         <div
           className="details-image"
           style={{
-            background: `url(${hotelImg}) center /cover no-repeat border-box`,
+            background: `url(${hotelImg}) center /cover no-repeat border-box`
           }}
         />
         <div className="details">
@@ -53,10 +56,11 @@ export default function DetailsPage() {
               </p>
             </div>
             <div className="details-rating">
-              <RatingBar rating={4.5} />
+              <RatingBar rating={4.6} />
             </div>
-            <h3 className="details-description heading">Description</h3>
-            <p>{service.description}</p>
+            <Description service={service} subservice={subservice} />
+            <Features />
+            <ContactMethods service={service} />
           </div>
           <div className="details-actions">
             <button className="details__delete" onClick={handleDelete}>

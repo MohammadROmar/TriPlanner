@@ -31,7 +31,7 @@ const router = createBrowserRouter([
           { path: ":covId", element: <ServicesPage /> },
           { path: ":covId/:serviceName", element: <SubServicesPage /> },
           {
-            path: "/:covId/:serviceName/:subServiceDetails",
+            path: "/:covId/:serviceName/:subserviceDetails",
             element: <DetailsPage />,
           },
         ],

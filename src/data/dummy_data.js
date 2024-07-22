@@ -125,12 +125,13 @@ export const dummySubServices = [
   {
     id: 1,
     st: 1,
+    name: "saojfposj",
     pricePerMonth: 100,
     pricePerNight: 100,
     numberOfPeople: 132,
     service: "",
     available: 1,
-    category: "",
+    category: 1,
   },
 ];
 export const governorates = [

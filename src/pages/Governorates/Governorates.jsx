@@ -1,8 +1,12 @@
+import { useQuery } from "@tanstack/react-query";
 import { NavLink } from "react-router-dom";
 
+import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner.jsx";
+
+import { getGovernorates } from "../../util/http.js";
 import { replaceSpaces } from "../../util/replace_spaces.js";
 import { cardColors } from "../../data/colors.js";
-import { governorates as dummyGovernorate } from "../../data/dummy_data.js";
+
 import "./Governorates.css";
 
 function Governorate({ covernorate, i }) {
@@ -23,9 +27,28 @@ function Governorate({ covernorate, i }) {
 }
 
 export default function Governorates() {
-  const governorates = dummyGovernorate.map((governorate, i) => (
-    <Governorate key={governorate.id} covernorate={governorate} i={i} />
-  ));
+  const { data, error, isError, isLoading } = useQuery({
+    queryKey: ["governorates"],
+    queryFn: getGovernorates,
+    gcTime: 0,
+    staleTime: 0,
+  });
 
-  return <ul className="governorates">{governorates}</ul>;
+  let content;
+
+  if (isLoading) {
+    content = <LoadingSpinner />;
+  }
+
+  if (isError) {
+    content = <p>{error.message}</p>;
+  }
+
+  if (data) {
+    content = data.governorates.map((governorate, i) => (
+      <Governorate key={governorate.id} covernorate={governorate} i={i} />
+    ));
+  }
+
+  return <ul className="governorates">{content}</ul>;
 }
