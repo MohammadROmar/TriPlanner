@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 
-import Service from "../../components/Service/Service.jsx";
+import Featue from "../../components/Featue/Featue.jsx";
 
 import { SERVICES } from "../../data/services.js";
 import aleppoCastleImg from "/aleppo_castle.jpg";
@@ -30,7 +30,7 @@ export default function StartPage() {
   const windowOpacity = useTransform(scrollY, [0, 150, 300], [1, 0.25, 0]);
 
   const services = SERVICES.map((service) => (
-    <Service key={service.title} service={service} />
+    <Featue key={service.title} service={service} />
   ));
 
   return (

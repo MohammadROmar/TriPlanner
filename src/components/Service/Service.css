@@ -1,54 +1,13 @@
-.our-service {
-  position: relative;
-  height: 20rem;
-  margin: 0.5rem 0;
-  border-radius: 1rem;
-  box-shadow: 0 0rem 1rem 0.3rem rgba(0, 0, 0, 0.6);
-  /* box-shadow: var(--box-shadow); */
-}
-
-.our-service-description {
+.service-name {
+  font-size: 1rem;
   position: absolute;
-  top: 80%;
   left: 0.5rem;
-  right: 0.5rem;
+  bottom: 1.5rem;
+}
+
+.service-address {
+  font-size: 0.8rem;
+  position: absolute;
+  left: 0.5rem;
   bottom: 0.5rem;
-  color: white;
-}
-
-.our-service-description h3 {
-  letter-spacing: 0.1rem;
-}
-
-.our-service-description p {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.7rem;
-}
-
-@media (min-width: 40rem) {
-  .our-service {
-    width: 12rem;
-    margin: 0.5rem;
-  }
-
-  .our-service-description {
-    top: 68%;
-  }
-}
-
-@media (min-width: 50rem) {
-  .our-service {
-    width: 14rem;
-    margin: 1rem;
-  }
-
-  .our-service-description {
-    top: 73%;
-  }
-}
-
-@media (min-width: 60rem) {
-  .our-service {
-    width: 17rem;
-  }
 }

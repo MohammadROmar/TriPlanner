@@ -1,67 +1,54 @@
-import { useLocation, NavLink } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "react-router-dom";
 
-import { dummySubServices } from "../../data/dummy_data.js";
-import { replaceSpaces } from "../../util/replace_spaces.js";
-import hotelImg from "../../assets/images/hotel_room.jpg";
+import Subservice from "../../components/Subservice/Subservice.jsx";
+import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner.jsx";
+
+import { get } from "../../util/http/methods/get.js";
 import "./SubServices.css";
-
-function SubService({ service, subservice }) {
-  return (
-    // <li className="sub-service">
-    //   <NavLink
-    //     to={replaceSpaces(subservice.id.toString()) + "_details"}
-    //     state={{ service, subservice }}
-    //     className=""
-    //   >
-    //     <div className="sub-service-image"></div>
-    //     <div className="sub-service-details">
-    //       <div className="sub-service-details_title">
-    //         <h2 className="sub-service-name">Just a dummy text</h2>
-    //         <p className="sub-service-cost"></p>
-    //       </div>
-    //       <div className="sub-service-features"></div>
-    //     </div>
-    //   </NavLink>
-    // </li>
-    <li className="service">
-      <NavLink
-        to={replaceSpaces(subservice.name)}
-        state={{ service, subservice }}
-        className="sub-service-nav"
-      >
-        <div
-          className="sub-service-image"
-          style={{
-            background: `url(${hotelImg}) center /cover no-repeat border-box`
-          }}
-        />
-        <div className="sub-service-details">
-          <div className="sub-service-title">
-            <h2 className="sub-service-name">{service.name}</h2>
-            {subservice.pricePerMonth && (
-              <p className="sub-service-cost">
-                {subservice.pricePerMonth}S.P / Month
-              </p>
-            )}
-            {/* {subservice.pricePerNight && (
-              <p className="sub-service-cost">{subservice.pricePerNight}S.P / Night</p>
-            )} */}
-          </div>
-          <h3 className="sub-service-address">{service.address}</h3>
-          <h3 className="sub-service-description">{service.description}</h3>
-        </div>
-      </NavLink>
-    </li>
-  );
-}
 
 export default function SubServices() {
   const location = useLocation();
   const service = location.state.service;
+  const serviceTypeId = location.state.serviceTypeId;
 
-  const subservices = dummySubServices.map(subservice => (
-    <SubService key={subservice.id} service={service} subservice={subservice} />
-  ));
+  const serviceTypeName =
+    serviceTypeId === 1 ? "rooms" : serviceTypeId === 2 ? "cars" : "trips";
 
-  return <ul className="sub-services">{subservices}</ul>;
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["subservices", "services"],
+    queryFn: () =>
+      get(
+        `services/${service.id}/${serviceTypeName}`,
+        `An Error occured while fetching the ${serviceTypeName}.`
+      ),
+  });
+
+  let content;
+
+  if (isLoading) {
+    content = <LoadingSpinner />;
+  }
+
+  if (isError) {
+    content = <p>{error.info || error.message}</p>;
+  }
+
+  if (data) {
+    if (data.length === 0) {
+      <p className="center empty">There is no content in here!</p>;
+    } else {
+      content = data.map((subservice) => (
+        <Subservice
+          key={subservice.id}
+          service={service}
+          subservice={subservice}
+          serviceTypeName={serviceTypeName}
+          st={serviceTypeId}
+        />
+      ));
+    }
+  }
+
+  return <ul className="sub-services">{content}</ul>;
 }

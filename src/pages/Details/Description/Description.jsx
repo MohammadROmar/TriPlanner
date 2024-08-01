@@ -1,22 +1,13 @@
+import Category from "../Gategory/Gategory.jsx";
+
 import "./Description.css";
 
-export default function Description({ service, subservice }) {
+export default function Description({ service, subservice, stId }) {
   return (
     <div className="details-description">
       <h3 className="details-description heading">Description</h3>
       <p>{service.description}</p>
-      <p>
-        Category:{" "}
-        <span className="detail__light">
-          {subservice.category === 1
-            ? "First "
-            : subservice.category === 2
-            ? "Second "
-            : "Third "}
-          Class
-        </span>
-        .
-      </p>
+      {stId < 3 && <Category stId={stId} />}
       {subservice.numberOfPeople && (
         <p>
           Number of People:{" "}

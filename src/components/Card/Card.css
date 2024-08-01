@@ -1,3 +1,26 @@
-.card {
-  border-radius: 0.5rem;
+.card-content {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+
+.card-content p,
+.card-content h1,
+.card-content h2,
+.card-content h3 {
+  width: 100%;
+  padding-right: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (min-width: 40rem) {
+  .card-content {
+    border-radius: 0.5rem;
+  }
 }

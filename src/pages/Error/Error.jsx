@@ -17,7 +17,9 @@ export default function ErrorPage() {
   if (error.status === 404) {
     title = error.title ?? "Could Not Find Content";
     message =
-      error.message ?? "Please Check the page or resources and try again.";
+      error.data ??
+      error.message ??
+      "Please Check the page or resources and try again.";
   } else if (error.status >= 400) {
     title = error.title ?? "Somthing Went Wrong!";
     message = error.message ?? "Please check your request and try again later.";

@@ -9,10 +9,10 @@ import Footer from "../../components/Footer/Footer.jsx";
 import "./Root.css";
 
 export default function RootLayout() {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const sideBarIsOpen = useSelector((state) => state.backdrop.isOpen);
-
   const location = useLocation();
+
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const sideBarIsOpen = useSelector(state => state.backdrop.isOpen);
 
   const cssClasses =
     (sideBarIsOpen ? "active" : "") + (!isAuthenticated ? "hidden" : "");
@@ -22,20 +22,9 @@ export default function RootLayout() {
       <ScrollToTop />
       <Header />
       {isAuthenticated && <SideBar />}
-      <main
-        id="content"
-        className={cssClasses}
-        style={
-          !isAuthenticated
-            ? {
-                gridColumnStart: "1",
-                gridColumnEnd: "-1",
-              }
-            : undefined
-        }
-      >
+      <main id="content" className={cssClasses}>
         <motion.div
-          key={location.pathname}
+          key={location.pathname.replace("createServiceOwner", "")}
           id="root-page"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

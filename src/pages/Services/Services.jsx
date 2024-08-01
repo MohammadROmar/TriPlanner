@@ -1,38 +1,50 @@
-import { NavLink } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "react-router-dom";
 
-import { dummyServices } from "../../data/dummy_data.js";
-import { replaceSpaces } from "../../util/replace_spaces.js";
-import hotelImg from "../../assets/images/hotel_room.jpg";
+import Service from "../../components/Service/Service.jsx";
+import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner.jsx";
+
+import { get } from "../../util/http/methods/get.js";
+
 import "./Services.css";
 
-function Service({ service }) {
-  return (
-    <li className="service">
-      <NavLink
-        to={replaceSpaces(service.name)}
-        state={{ service }}
-        className="service-nav"
-      >
-        <div
-          className="service-image"
-          style={{
-            background: `url(${hotelImg}) center /cover no-repeat border-box`,
-          }}
-        />
-        <div className="service-details">
-          <h2 className="service-name">{service.name}</h2>
-          <h3 className="service-address">{service.address}</h3>
-          <h3 className="service-description">{service.description}</h3>
-        </div>
-      </NavLink>
-    </li>
-  );
-}
-
 export default function ServicesPage() {
-  const services = dummyServices.map((service) => (
-    <Service service={service} />
-  ));
+  const location = useLocation();
+  const serviceTypeId = location.state.serviceTypeId;
+  const governorateId = location.state.governorateId;
 
-  return <ul className="services">{...services}</ul>;
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["services", "service types", "governorates"],
+    queryFn: () =>
+      get(
+        `governorates/${governorateId}/services/serviceTypes/${serviceTypeId}`,
+        "An Error occured while fetching services."
+      ),
+  });
+
+  let content;
+
+  if (isLoading) {
+    content = <LoadingSpinner />;
+  }
+
+  if (isError) {
+    content = (
+      <p>
+        {error.message} {error.info}
+      </p>
+    );
+  }
+
+  if (data) {
+    content = data.map((service) => (
+      <Service
+        key={service.id}
+        service={service}
+        serviceTypeId={serviceTypeId}
+      />
+    ));
+  }
+
+  return <ul className="services">{content}</ul>;
 }

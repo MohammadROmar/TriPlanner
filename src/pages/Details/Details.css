@@ -49,27 +49,6 @@
   gap: 0.25rem;
 }
 
-.details-actions {
-  align-self: self-end;
-  justify-self: self-end;
-}
-
-.details-actions button {
-  width: 4rem;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-}
-
-.details__delete {
-  color: var(--color-danger-background);
-  background-color: var(--color-danger);
-}
-
-.details__edit {
-  color: var(--color-warning-background);
-  background-color: var(--color-warning);
-}
-
 .details .detail__light {
   opacity: 0.8;
 }

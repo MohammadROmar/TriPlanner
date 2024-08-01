@@ -1,0 +1,29 @@
+.input-label {
+  color: var(--color-neuter);
+}
+
+.input-field {
+  caret-color: var(--color-neuter);
+  height: 2.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+  border: 0.1rem solid var(--color-neuter);
+  border-radius: 0.5rem;
+  background: rgba(133, 133, 133, 0.15);
+}
+
+.input-field:focus {
+  outline: none;
+  color: var(--color-neuter);
+  border-color: var(--color-primary);
+}
+
+.input-field.error {
+  border-color: var(--color-danger);
+}
+
+.input-error {
+  margin: 0.25rem !important;
+  font-size: 0.7rem;
+  color: var(--color-danger) !important;
+}

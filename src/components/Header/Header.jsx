@@ -11,8 +11,13 @@ import "./Header.css";
 
 export default function Header() {
   const navigate = useNavigate();
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const dispatch = useDispatch(authActions.login);
+
+  function handleCTA() {
+    dispatch(authActions.login());
+    navigate("/");
+  }
 
   return (
     <>
@@ -24,13 +29,7 @@ export default function Header() {
           <Theme />
         </div>
         {!isAuthenticated && (
-          <button
-            id="cta"
-            onClick={async () => {
-              dispatch(authActions.login());
-              navigate("/");
-            }}
-          >
+          <button id="cta" onClick={handleCTA}>
             Get Started
           </button>
         )}

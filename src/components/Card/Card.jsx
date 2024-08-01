@@ -1,13 +1,22 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import hotelImg from "../../assets/images/hotel_room.jpg";
 import "./Card.css";
 
-export default function Card({ service, to }) {
+export default function Card({ to, background, children, ...props }) {
   return (
-    <NavLink to={to} className="card">
-      <img src={hotelImg} alt="Image for the service." />
-      <div className="card-details"></div>
-    </NavLink>
+    <Link to={to} className="card" {...props}>
+      <div
+        className="card-content"
+        style={{
+          background: `
+            linear-gradient(
+              to top, rgba(0, 0, 0, 1),
+              transparent 60%
+            ), ${background}`,
+        }}
+      >
+        {children}
+      </div>
+    </Link>
   );
 }

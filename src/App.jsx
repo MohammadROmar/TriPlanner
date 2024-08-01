@@ -3,10 +3,12 @@ import { QueryClientProvider } from "@tanstack/react-query";
 
 import Router from "./router/Router.jsx";
 
-import { queryClient } from "./util/http.js";
+import { queryClient } from "./util/http/http.js";
 
 function App() {
-  const theme = useSelector((state) => state.theme.activeTheme);
+  const theme = useSelector(state => state.theme.activeTheme);
+
+  let x;
 
   return (
     <div id={theme === "DARK" ? "dark" : "light"} className="App">

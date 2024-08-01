@@ -1,0 +1,25 @@
+.service-types {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.5rem;
+}
+
+@media (min-width: 30rem) {
+  .service-types {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 40rem) {
+  .service-types {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 50rem) {
+  .service-types {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

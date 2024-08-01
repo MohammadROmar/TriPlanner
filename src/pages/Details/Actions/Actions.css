@@ -1,0 +1,34 @@
+.details-actions {
+  align-self: self-end;
+  justify-self: self-end;
+}
+
+.details-actions button {
+  width: 4rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.details__delete {
+  color: var(--color-danger-background);
+  background-color: var(--color-danger);
+}
+
+.delete-subservice.modal-form {
+  height: 2.5rem;
+}
+
+.details__edit {
+  color: var(--color-warning-background);
+  background-color: var(--color-warning);
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin: 0 !important;
+  height: 2.5rem;
+  vertical-align: middle;
+}

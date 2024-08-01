@@ -1,5 +1,5 @@
 #spinner {
-  width: 100vw;
+  width: calc(100vw - 2rem);
   height: 100%;
 
   display: flex;

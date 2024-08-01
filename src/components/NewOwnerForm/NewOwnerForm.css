@@ -1,0 +1,49 @@
+#create-owner-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-owner-title {
+  font-size: 1rem;
+  color: var(--color-primary) !important;
+}
+
+.divider {
+  width: 100%;
+  height: 0.15rem;
+  margin: 1rem;
+  background: var(--color-primary);
+  border-radius: 0.1rem;
+}
+
+.create-owner-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#select-service-types {
+  height: 2.5rem;
+  border: 0.1rem solid var(--color-neuter);
+  border-radius: 0.5rem;
+}
+
+#select-service-types:focus {
+  outline: none;
+}
+
+.owner-modal-actions {
+  text-align: right;
+}
+
+.action.neuter {
+  color: var(--color-neuter);
+  background: var(--color-neuter-background);
+}

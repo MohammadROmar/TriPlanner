@@ -1,84 +1,25 @@
 .sub-services {
-  padding: 0.5rem 0;
+  padding: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 0.5rem;
 }
 
-.sub-service {
-  width: 100%;
-  height: 15rem;
-  margin: 0;
-  text-decoration: none;
-  border-radius: 0.5rem;
-  box-shadow: 0.1rem 0.1rem 0.1rem 0 #0000002b;
-  background-color: var(--color-background);
-}
-
-.sub-service-nav {
-  height: 100%;
-}
-
-.sub-service-image {
-  width: 100%;
-  height: 10rem;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-}
-
-.sub-service-details {
-  height: 5rem;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: space-between;
-  justify-content: space-between;
-}
-
-.sub-service-title {
-  display: flex;
-  justify-content: space-between;
-}
-
-.sub-service-name {
-  font-family: "Ubuntu-Bold";
-  font-size: 1rem;
-  color: var(--color-primary__light);
-}
-
-.sub-service-cost {
-  padding: 0.25rem;
-  color: var(--color-text);
-  border: 0.1rem solid var(--color-primary__light);
-  border-radius: 0.3rem;
-}
-
-.sub-service-address {
-  font-size: 0.8rem;
-  color: var(--color-text);
-}
-
-.sub-service-description {
-  font-size: 0.8rem;
-  color: var(--color-text);
+@media (min-width: 30rem) {
+  .sub-services {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (min-width: 40rem) {
   .sub-services {
-    grid-template-columns: auto auto auto;
-    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
   }
+}
 
-  .sub-service-name {
-    font-size: 1.2rem;
-  }
-
-  .sub-service-address {
-    font-size: 1rem;
-  }
-
-  .sub-service-description {
-    font-size: 1rem;
+@media (min-width: 50rem) {
+  .sub-services {
+    grid-template-columns: repeat(5, 1fr);
   }
 }

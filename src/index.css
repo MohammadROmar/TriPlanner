@@ -79,6 +79,11 @@
   color: var(--color-danger);
 }
 
+.empty {
+  font-family: "Ubuntu-Bold";
+  font-size: 2rem;
+}
+
 html {
   height: 100%;
 }
