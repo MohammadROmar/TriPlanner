@@ -1,7 +1,5 @@
-import { useRef } from "react";
 import { Outlet, Link } from "react-router-dom";
 
-import Modal from "../../components/UI/Modal/Modal.jsx";
 import Card from "../../components/Card/Card.jsx";
 
 import "./Home.css";

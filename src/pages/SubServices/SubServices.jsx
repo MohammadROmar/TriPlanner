@@ -1,16 +1,18 @@
+import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "react-router-dom";
 
 import Subservice from "../../components/Subservice/Subservice.jsx";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner.jsx";
 
+import { setSubservice } from "../../store/slices/service.js";
 import { get } from "../../util/http/methods/get.js";
+
 import "./SubServices.css";
 
 export default function SubServices() {
-  const location = useLocation();
-  const service = location.state.service;
-  const serviceTypeId = location.state.serviceTypeId;
+  const dispatch = useDispatch();
+  const service = useSelector((state) => state.service.service);
+  const serviceTypeId = useSelector((state) => state.service.serviceTypeId);
 
   const serviceTypeName =
     serviceTypeId === 1 ? "rooms" : serviceTypeId === 2 ? "cars" : "trips";
@@ -36,19 +38,27 @@ export default function SubServices() {
 
   if (data) {
     if (data.length === 0) {
-      <p className="center empty">There is no content in here!</p>;
+      content = <p className="center empty">There is no content in here!</p>;
     } else {
       content = data.map((subservice) => (
         <Subservice
           key={subservice.id}
-          service={service}
-          subservice={subservice}
-          serviceTypeName={serviceTypeName}
-          st={serviceTypeId}
+          title={
+            subservice.title !== undefined
+              ? subservice.title
+              : subservice.name !== undefined
+              ? subservice.name
+              : subservice.description
+          }
+          onClick={() => dispatch(setSubservice(subservice))}
         />
       ));
     }
   }
 
-  return <ul className="sub-services">{content}</ul>;
+  return (
+    <>
+      <ul className="sub-services">{content}</ul>
+    </>
+  );
 }

@@ -15,18 +15,27 @@
 }
 
 .feature.wifi {
-  color: var(--color-neuter2);
   background: var(--color-neuter2-background);
 }
 
+.feature.wifi p {
+  color: var(--color-neuter2);
+}
+
 .feature.pool {
-  color: var(--color-success);
   background: var(--color-success-background);
 }
 
+.feature.pool p {
+  color: var(--color-success);
+}
+
 .feature.restaurant {
-  color: var(--color-neuter);
   background: var(--color-neuter-background);
+}
+
+.feature.restaurant p {
+  color: var(--color-neuter);
 }
 
 .feature p {

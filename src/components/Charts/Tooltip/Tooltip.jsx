@@ -1,3 +1,4 @@
+import { v4 } from "uuid";
 import { capitalizeFirstLetter } from "../../../util/capitalizeFirstLetter.js";
 import "./Tooltip.css";
 
@@ -11,7 +12,7 @@ function Tip({ tip }) {
 
 export default function Tooltip({ active, payload, label }) {
   if (active && payload && payload.length) {
-    const tooltipKeys = payload.map(tip => <Tip key={tip} tip={tip} />);
+    const tooltipKeys = payload.map((tip) => <Tip key={v4()} tip={tip} />);
 
     return (
       <div className="tooltip">

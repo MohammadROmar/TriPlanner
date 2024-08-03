@@ -1,0 +1,7 @@
+.detail-text .light {
+  color: var(--color-light);
+}
+
+.detail-text .normal {
+  color: var(--color-text);
+}

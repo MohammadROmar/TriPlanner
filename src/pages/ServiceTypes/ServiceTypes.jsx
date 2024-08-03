@@ -1,14 +1,18 @@
+import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "react-router-dom";
 
 import ServiceType from "../../components/ServiceType/ServiceType.jsx";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner.jsx";
 
+import { setServiceTypeId } from "../../store/slices/service.js";
 import { get } from "../../util/http/methods/get.js";
+import { cardColors } from "../../data/colors.js";
 
 import "./ServiceTypes.css";
 
 export default function ServiceTypes() {
+  const dispatch = useDispatch();
+
   const { data, isLoading, error, isError } = useQuery({
     queryKey: ["service types", "governorates"],
     queryFn: () =>
@@ -17,9 +21,6 @@ export default function ServiceTypes() {
         "An Error occured while fetching service types."
       ),
   });
-
-  const location = useLocation();
-  const governorateId = location.state.governorateId;
 
   let content;
 
@@ -35,9 +36,9 @@ export default function ServiceTypes() {
     content = data.map((serviceType, index) => (
       <ServiceType
         key={serviceType.id}
-        serviceType={serviceType}
-        governorateId={governorateId}
-        index={index}
+        title={serviceType.name}
+        background={cardColors[index % 4].color}
+        onClick={() => dispatch(setServiceTypeId(serviceType.id))}
       />
     ));
   }

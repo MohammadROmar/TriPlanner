@@ -29,13 +29,13 @@
   justify-content: center;
 }
 
-#select-service-types {
+#select-roles {
   height: 2.5rem;
   border: 0.1rem solid var(--color-neuter);
   border-radius: 0.5rem;
 }
 
-#select-service-types:focus {
+#select-roles:focus {
   outline: none;
 }
 

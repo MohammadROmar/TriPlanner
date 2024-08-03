@@ -1,0 +1,67 @@
+#total-users {
+  list-style: none;
+  padding: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user {
+  width: 100%;
+  height: 9rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.user > .container {
+  width: 3rem;
+  height: 3rem;
+  margin: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.user svg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.user-type {
+  margin: 0.5rem;
+  font-family: Ubuntu-Bold, sans-serif;
+}
+
+.users-count {
+  margin: 0.5rem;
+  margin-left: 1rem;
+}
+
+.user-error {
+  color: var(--color-danger) !important;
+  padding-bottom: 0.5rem;
+}
+
+@media (min-width: 37rem) {
+  #total-users {
+    margin: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .user {
+    width: 23.5%;
+    height: 11rem;
+  }
+}
+
+@media (min-width: 53.5rem) {
+  .user {
+    height: 10rem;
+  }
+}

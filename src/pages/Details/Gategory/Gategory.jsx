@@ -1,20 +1,29 @@
+import { useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
+
+import Detail from "../../../components/Detail/Detail.jsx";
+
 import { get } from "../../../util/http/methods/get.js";
 
 import "./Gategory.css";
 
-export default function Gategory({ stId }) {
-  const { data, isLoading, isError, error } = useQuery({
+export default function Gategory() {
+  const serviceTypeId = useSelector((state) => state.service.serviceTypeId);
+  const subservice = useSelector((state) => state.service.subservice);
+
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["categories"],
     queryFn: () =>
       get(
-        `SeededValues/${stId === 1 ? "RoomCategories" : "CarCategories"}`,
+        `SeededValues/${
+          serviceTypeId === 1 ? "RoomCategories" : "CarCategories"
+        }`,
         "Couldn't get gategories."
       ),
   });
 
   if (isError) {
-    return <p className="category error">{error.message}</p>;
+    return <p className="category error">Couldn't get gategories.</p>;
   }
 
   if (isLoading) {
@@ -22,12 +31,12 @@ export default function Gategory({ stId }) {
   }
 
   if (data) {
-    const category = data.find((category) => category.id === stId);
-
-    return (
-      <p className="detail">
-        <span>Category:</span> {category.name}
-      </p>
+    const category = data.find(
+      (category) =>
+        category.id === subservice.roomCategoryId ||
+        category.id === subservice.carCategoryId
     );
+
+    return <Detail detail="Category: " value={category.name} />;
   }
 }

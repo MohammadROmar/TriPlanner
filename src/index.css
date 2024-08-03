@@ -4,6 +4,7 @@
   --color-background: #fff;
   --color-body: white;
   --color-text: #000000b4;
+  --color-light: rgba(0, 0, 0, 0.5);
 
   --color-success-background: #dcfce7;
   --color-success: #41f1b6;
@@ -33,6 +34,7 @@
   --color-background: #2a2a2a;
   --color-body: #333;
   --color-card: #2a2a2a;
+  --color-light: rgba(255, 255, 255, 0.5);
 
   --color-border: rgba(255, 255, 255, 0.2);
 
@@ -82,6 +84,10 @@
 .empty {
   font-family: "Ubuntu-Bold";
   font-size: 2rem;
+}
+
+.error {
+  color: var(--color-danger);
 }
 
 html {

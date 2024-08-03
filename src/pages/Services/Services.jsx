@@ -1,17 +1,18 @@
+import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "react-router-dom";
 
 import Service from "../../components/Service/Service.jsx";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner.jsx";
 
+import { setService } from "../../store/slices/service.js";
 import { get } from "../../util/http/methods/get.js";
 
 import "./Services.css";
 
 export default function ServicesPage() {
-  const location = useLocation();
-  const serviceTypeId = location.state.serviceTypeId;
-  const governorateId = location.state.governorateId;
+  const dispatch = useDispatch();
+  const governorateId = useSelector((state) => state.service.governorateId);
+  const serviceTypeId = useSelector((state) => state.service.serviceTypeId);
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["services", "service types", "governorates"],
@@ -37,13 +38,18 @@ export default function ServicesPage() {
   }
 
   if (data) {
-    content = data.map((service) => (
-      <Service
-        key={service.id}
-        service={service}
-        serviceTypeId={serviceTypeId}
-      />
-    ));
+    if (data.length === 0) {
+      content = <p className="center empty">There is no content in here!</p>;
+    } else {
+      content = data.map((service) => (
+        <Service
+          key={service.id}
+          title={service.name}
+          subtitle={service.address}
+          onClick={() => dispatch(setService(service))}
+        />
+      ));
+    }
   }
 
   return <ul className="services">{content}</ul>;

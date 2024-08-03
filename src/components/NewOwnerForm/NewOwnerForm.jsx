@@ -1,62 +1,49 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
+import Roles from "../Roles.jsx";
 import Input from "../Input/Input.jsx";
-import NewOwnerFormActions from "./NewOwnerFormActions.jsx";
+import NewOwnerFormActions from "../NewOwnerFormActions.jsx";
 
 import { useInput } from "../../hooks/useInput.js";
 
-import { dummyServiceTypes } from "../../data/dummy_data.js";
 import {
   isEmpty,
   validateEmail,
-  validatePassword
+  validatePassword,
 } from "../../util/validation.js";
 
 import "./NewOwnerForm.css";
 
 export default function NewOwnerForm() {
-  const navigate = useNavigate();
+  const [selectedRole, setSelectedRole] = useState();
 
-  const [selectedServiceType, setSelectedServiceType] = useState(1);
-  const [passwordIsValid, setPasswordIsValid] = useState(true);
   const [emailIsValid, setEmailIsValid] = useState(true);
+  const [passwordIsValid, setPasswordIsValid] = useState(true);
 
   const {
     value: enteredUserName,
     hasError: userNameHasError,
-    isInvalid: userNameIsInvalid,
     handleInputChange: handleUserNameChange,
-    handleInputBlur: handleUserNameBlur
-  } = useInput("", value => !isEmpty(value));
+    handleInputBlur: handleUserNameBlur,
+  } = useInput("", (value) => !isEmpty(value));
 
   const {
     value: enteredEmail,
     hasError: emailHasError,
     isInvalid: emailIsInvalid,
     handleInputChange: handleEmailChange,
-    handleInputBlur: handleEmailBlur
-  } = useInput("", value => validateEmail(value));
+    handleInputBlur: handleEmailBlur,
+  } = useInput("", (value) => validateEmail(value));
 
   const {
     value: enteredPassword,
     hasError: passwordHasError,
     isInvalid: passwordIsInvalid,
     handleInputChange: handlePasswordChange,
-    handleInputBlur: handlePasswordBlur
-  } = useInput("", value => validatePassword(value));
-
-  const serviceTypes = dummyServiceTypes.map(st => (
-    <option key={st.id} value={st.id}>
-      {st.name}
-    </option>
-  ));
+    handleInputBlur: handlePasswordBlur,
+  } = useInput("", (value) => validatePassword(value));
 
   function onConfirm() {
-    if (!emailIsInvalid && !passwordIsInvalid) {
-      navigate("../");
-    }
-
     if (passwordIsInvalid) {
       setPasswordIsValid(false);
     }
@@ -84,7 +71,7 @@ export default function NewOwnerForm() {
           />
           <Input
             name="email"
-            onChange={event => {
+            onChange={(event) => {
               setEmailIsValid(true);
               handleEmailChange(event);
             }}
@@ -96,7 +83,7 @@ export default function NewOwnerForm() {
           />
           <Input
             name="password"
-            onChange={event => {
+            onChange={(event) => {
               setPasswordIsValid(true);
               handlePasswordChange(event);
             }}
@@ -106,19 +93,10 @@ export default function NewOwnerForm() {
               "Password should contain numbers, poth capital & small letters and special characters."
             }
           />
-          <div className="input">
-            <label htmlFor="select-service-types" className="input-label">
-              Service Type
-            </label>
-            <select
-              name="service-types"
-              id="select-service-types"
-              value={selectedServiceType}
-              onChange={event => setSelectedServiceType(event.target.value)}
-            >
-              {serviceTypes}
-            </select>
-          </div>
+          <Roles
+            value={selectedRole}
+            onChange={(value) => setSelectedRole(value)}
+          />
         </form>
       </div>
       <NewOwnerFormActions
@@ -126,7 +104,8 @@ export default function NewOwnerForm() {
           hasError: userNameHasError || emailHasError || passwordHasError,
           userName: enteredUserName,
           email: enteredEmail,
-          password: enteredPassword
+          password: enteredPassword,
+          role: selectedRole,
         }}
         onConfirm={onConfirm}
       />

@@ -1,19 +1,14 @@
 import Card from "../Card/Card.jsx";
 
 import { replaceSpaces } from "../../util/replace_spaces.js";
-import { cardColors } from "../../data/colors.js";
 
 import "./Governorate.css";
 
-export default function Governorate({ governorate, i }) {
+export default function Governorate({ title, background, ...props }) {
   return (
-    <li className="governorate">
-      <Card
-        to={replaceSpaces(governorate.name)}
-        state={{ governorateId: governorate.id }}
-        background={cardColors[i % 4].color}
-      >
-        <p className="governorate-title">{governorate.name}</p>
+    <li className="governorate" {...props}>
+      <Card to={replaceSpaces(title)} background={background}>
+        <p className="governorate-title">{title}</p>
       </Card>
     </li>
   );

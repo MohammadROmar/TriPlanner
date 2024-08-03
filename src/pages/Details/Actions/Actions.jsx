@@ -1,6 +1,8 @@
 import { useRef } from "react";
+import { useSelector } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
 import Modal from "../../../components/UI/Modal/Modal.jsx";
 import ErrorBlock from "../../../components/UI/ErrorBlock/ErrorBlock.jsx";
@@ -9,13 +11,16 @@ import { deleteFn } from "../../../util/http/methods/delete.js";
 
 import "./Actions.css";
 
-export default function Actions({ serId, subserId, serviceTypeName }) {
+export default function Actions() {
+  const serviceId = useSelector((state) => state.service.service.id);
+  const subserviceId = useSelector((state) => state.service.subservice.id);
+
   const navigate = useNavigate();
 
   const { mutate, isPending, isError, error } = useMutation({
     mutationFn: () =>
       deleteFn(
-        `services/${serId}/rooms/${subserId}`,
+        `services/${serviceId}/rooms/${subserviceId}`,
         "An error occured while deleting this subservice."
       ),
     onSuccess: () => navigate("../"),
@@ -36,7 +41,7 @@ export default function Actions({ serId, subserId, serviceTypeName }) {
   let content;
 
   if (isPending) {
-    content = <p className="submit">Submitting...</p>;
+    content = <p className="submit">Deleting...</p>;
   }
 
   if (isError) {
@@ -63,8 +68,7 @@ export default function Actions({ serId, subserId, serviceTypeName }) {
             </button>
           </form>
         )}
-
-        {isError && content}
+        <AnimatePresence>{isError && content}</AnimatePresence>
       </Modal>
 
       <div className="details-actions">

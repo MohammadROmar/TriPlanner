@@ -1,0 +1,34 @@
+.details_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details_title span {
+  color: var(--color-primary__light);
+}
+
+.details-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.service-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.service-price span {
+  color: var(--color-primary__light) !important;
+}
+
+.details-location {
+  display: flex;
+  align-items: center;
+}
+
+.details-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}

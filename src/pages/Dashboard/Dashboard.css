@@ -17,50 +17,6 @@
   font-family: Ubuntu-Bold, sans-serif;
 }
 
-#new-customers {
-  list-style: none;
-  padding: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.customer {
-  width: 100%;
-  height: 9rem;
-  margin: 0.5rem;
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.customer > .container {
-  width: 3rem;
-  height: 3rem;
-  margin: 0.5rem;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.customer svg {
-  width: 2.5rem;
-  height: 2.5rem;
-}
-
-.customer-type {
-  margin: 0.5rem;
-  font-family: Ubuntu-Bold, sans-serif;
-}
-
-.customer-numbers {
-  margin: 0.5rem;
-  margin-left: 1rem;
-}
-
 #statistics {
   height: 62.5rem;
   margin: 0.5rem 0;

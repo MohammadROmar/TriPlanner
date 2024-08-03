@@ -5,34 +5,15 @@ import hotelImg from "../../assets/images/hotel_room.jpg";
 
 import "./Service.css";
 
-export default function Service({ service, serviceTypeId }) {
+export default function Service({ title, subtitle, background, ...props }) {
   return (
-    <li className="service">
-      {/* <Link
-        to={replaceSpaces(service.name)}
-        state={{ service, serviceTypeId }}
-        className="service-nav"
-      >
-        <div
-          className="service-image"
-          style={{
-            background: `url(${hotelImg}) center /cover no-repeat border-box`,
-          }}
-        />
-        <div className="service-details">
-          <h2 className="service-name">{service.name}</h2>
-          <h3 className="service-address">{service.address}</h3>
-          <h3 className="service-description">{service.description}</h3>
-        </div>
-      </Link> */}
+    <li className="service" {...props}>
       <Card
-        to={replaceSpaces(service.name)}
-        state={{ service, serviceTypeId }}
+        to={replaceSpaces(title)}
         background={`url(${hotelImg}) center /cover no-repeat border-box`}
       >
-        <h2 className="service-name">{service.name}</h2>
-        <h3 className="service-address">{service.address}</h3>
-        {/* <h3 className="service-description">{service.description}</h3> */}
+        <h2 className="service-name">{title}</h2>
+        <h3 className="service-address">{subtitle}</h3>
       </Card>
     </li>
   );
