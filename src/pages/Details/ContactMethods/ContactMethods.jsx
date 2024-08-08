@@ -5,7 +5,7 @@ import Detail from "../../../components/Detail/Detail.jsx";
 import "./ContactMethods.css";
 
 export default function ContactMethods() {
-  const service = useSelector((state) => state.service.service);
+  const service = useSelector(state => state.service.service);
 
   return (
     <div className="details-contact">

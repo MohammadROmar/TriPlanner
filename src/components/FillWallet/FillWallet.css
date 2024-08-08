@@ -1,0 +1,30 @@
+.fill-wallet-actions {
+  height: 2.5rem;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fill-wallet-actions .submit {
+  height: auto;
+  padding: 0 0.5rem;
+  color: var(--color-neuter);
+  border-radius: 0.25rem;
+  background: var(--color-neuter-background);
+}
+
+.submit {
+  height: 2.5rem;
+  margin: 0 !important;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.submit-wallet {
+  height: 2.5rem;
+  margin: 0 !important;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

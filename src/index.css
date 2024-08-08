@@ -82,8 +82,20 @@
 }
 
 .empty {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-text);
+}
+
+.empty h2 {
+  font-size: 1.5rem;
   font-family: "Ubuntu-Bold";
-  font-size: 2rem;
 }
 
 .error {
@@ -126,14 +138,4 @@ button {
 
 a {
   text-decoration: none;
-}
-
-@media (min-width: 40rem) {
-  /*.App {
-    grid-template-columns: 15rem auto;
-    grid-template-areas:
-      "header header"
-      "sidebar main"
-      "sidebar footer";
-  }*/
 }

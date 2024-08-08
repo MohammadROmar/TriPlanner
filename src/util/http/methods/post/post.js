@@ -1,4 +1,4 @@
-import { domain, headers } from "../http.js";
+import { domain, headers } from "../../http.js";
 
 export async function post({ path, data, errorMessage }) {
   const url = domain + path;
@@ -16,4 +16,8 @@ export async function post({ path, data, errorMessage }) {
 
     throw error;
   }
+
+  // const responseBody = await response.json();
+
+  // return responseBody;
 }

@@ -1,0 +1,17 @@
+.error-element {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-element-title {
+  font-family: "Ubuntu-Bold";
+  color: var(--color-danger);
+}
+
+.error-element-message {
+  color: var(--color-danger);
+}

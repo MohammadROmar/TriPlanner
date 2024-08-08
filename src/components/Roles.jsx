@@ -17,7 +17,7 @@ export default function Roles({ value, onChange }) {
   if (isError) {
     content = (
       <p style={{ margin: "0.25rem", color: "var(--color-danger)" }}>
-        Failed to fitch owners roles.
+        Failed to fetch owners roles.
       </p>
     );
   }
@@ -32,19 +32,25 @@ export default function Roles({ value, onChange }) {
 
   return (
     <div className="input">
-      <label htmlFor="select-role" className="input-label">
-        Role
-      </label>
+      {!data && <p style={{ margin: 0, color: "var(--color-neuter)" }}>Role</p>}
       {data && (
-        <select
-          name="roles"
-          id="select-roles"
-          value={value}
-          // on={(event) => console.log(event.target.value + " selected")}
-          onChange={(event) => onChange(event.target.value)}
-        >
-          {content}
-        </select>
+        <>
+          <label htmlFor="select-role" className="input-label">
+            Role
+          </label>
+          <select
+            name="roles"
+            value={value}
+            id="select-roles"
+            className="select-roles"
+            onChange={(event) => onChange(event.target.value)}
+          >
+            <option value="" disabled>
+              Choose Governorate
+            </option>
+            {content}
+          </select>
+        </>
       )}
       {(isError || isLoading) && content}
     </div>

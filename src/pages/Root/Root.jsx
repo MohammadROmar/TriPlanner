@@ -24,7 +24,10 @@ export default function RootLayout() {
       {isAuthenticated && <SideBar />}
       <main id="content" className={cssClasses}>
         <motion.div
-          key={location.pathname.replace("createServiceOwner", "")}
+          key={location.pathname
+            .replace("createServiceOwner", "")
+            .replace("fillUserWallet", "")
+            .replace("/createService", "")}
           id="root-page"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

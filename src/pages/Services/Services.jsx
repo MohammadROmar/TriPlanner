@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 
+import EmptyPage from "../../components/EmptyPage.jsx";
 import Service from "../../components/Service/Service.jsx";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner.jsx";
 
@@ -11,46 +12,41 @@ import "./Services.css";
 
 export default function ServicesPage() {
   const dispatch = useDispatch();
-  const governorateId = useSelector((state) => state.service.governorateId);
-  const serviceTypeId = useSelector((state) => state.service.serviceTypeId);
+  const governorateId = useSelector(state => state.service.governorateId);
+  const serviceTypeId = useSelector(state => state.service.serviceTypeId);
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["services", "service types", "governorates"],
     queryFn: () =>
       get(
-        `governorates/${governorateId}/services/serviceTypes/${serviceTypeId}`,
-        "An Error occured while fetching services."
-      ),
+        `governorates/${governorateId}/services/serviceTypes/${serviceTypeId}`
+      )
   });
 
-  let content;
-
   if (isLoading) {
-    content = <LoadingSpinner />;
+    return <LoadingSpinner />;
   }
 
   if (isError) {
-    content = (
-      <p>
-        {error.message} {error.info}
-      </p>
-    );
+    return <ErrorElement />;
   }
 
   if (data) {
     if (data.length === 0) {
-      content = <p className="center empty">There is no content in here!</p>;
-    } else {
-      content = data.map((service) => (
-        <Service
-          key={service.id}
-          title={service.name}
-          subtitle={service.address}
-          onClick={() => dispatch(setService(service))}
-        />
-      ));
+      return <EmptyPage />;
     }
-  }
 
-  return <ul className="services">{content}</ul>;
+    return (
+      <ul className="services">
+        {data.map(service => (
+          <Service
+            key={service.id}
+            title={service.name}
+            subtitle={service.address}
+            onClick={() => dispatch(setService(service))}
+          />
+        ))}
+      </ul>
+    );
+  }
 }

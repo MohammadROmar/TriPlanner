@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const theme = localStorage.getItem("trip_planner_theme");
+
 const initialThemeState = {
   activeTheme:
-    localStorage.getItem("trip_planner_theme") ??
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+    theme !== undefined
+      ? theme
+      : window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "DARK"
       : "LIGHT"
 };

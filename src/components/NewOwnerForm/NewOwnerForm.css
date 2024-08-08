@@ -1,34 +1,3 @@
-#create-owner-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.create-owner-title {
-  font-size: 1rem;
-  color: var(--color-primary) !important;
-}
-
-.divider {
-  width: 100%;
-  height: 0.15rem;
-  margin: 1rem;
-  background: var(--color-primary);
-  border-radius: 0.1rem;
-}
-
-.create-owner-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.input {
-  margin-bottom: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 #select-roles {
   height: 2.5rem;
   border: 0.1rem solid var(--color-neuter);
@@ -46,4 +15,20 @@
 .action.neuter {
   color: var(--color-neuter);
   background: var(--color-neuter-background);
+}
+
+.submit-owner {
+  height: 2.5rem;
+  margin: 0 !important;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.select-roles {
+  width: 100%;
+  display: block;
+  padding: 0 0.25rem 0 0.25rem;
+
+  color: var(--color-neuter);
 }

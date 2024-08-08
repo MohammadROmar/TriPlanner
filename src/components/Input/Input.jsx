@@ -1,17 +1,21 @@
 import { motion, AnimatePresence } from "framer-motion";
 
-import { capitalizeFirstLetter } from "../../util/capitalizeFirstLetter.js";
+import TempIcon from "../../assets/icons/Mobile.jsx";
+
+import { formateInputLabel } from "../../util/formateInputLabel.js";
 
 import "./Input.css";
 
 export default function Input({
-  name,
   id,
   type,
+  name,
   value,
   error,
   onBlur,
-  onChange
+  onChange,
+  icon: Icon,
+  ...props
 }) {
   if (id === undefined) {
     id = name;
@@ -22,19 +26,23 @@ export default function Input({
   }
 
   return (
-    <div className="input">
-      <label htmlFor={id} className="input-label">
-        {capitalizeFirstLetter(name)}
-      </label>
-      <input
-        type={type}
-        id={id}
-        name={name}
-        value={value}
-        onBlur={onBlur}
-        onChange={onChange}
-        className={"input-field" + (error ? " error" : "")}
-      ></input>
+    <motion.div layout className="input-container">
+      <div className="input">
+        <input
+          type={type}
+          id={id}
+          name={name}
+          value={value}
+          onBlur={onBlur}
+          onChange={onChange}
+          autoComplete="true"
+          placeholder={formateInputLabel(name)}
+          className={"input-field" + (error ? " error" : "")}
+          {...props}
+        />
+        <Icon isError={error} />
+      </div>
+
       <AnimatePresence>
         {error && (
           <motion.p
@@ -47,6 +55,6 @@ export default function Input({
           </motion.p>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }

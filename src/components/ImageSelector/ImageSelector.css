@@ -1,0 +1,41 @@
+.select-image-container {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  position: relative;
+
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--color-neuter);
+  background: none center / cover no-repeat border-box;
+}
+
+.select-image-container legend {
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  border-radius: 0.3rem;
+  padding: 0.1rem 0.25rem;
+
+  background: var(--color-neuter);
+  color: var(--color-neuter-background);
+}
+
+.select-image-container label {
+  padding: 0.15rem;
+  padding-bottom: 0;
+
+  border-radius: 0.3rem;
+  background: var(--color-neuter);
+  color: var(--color-neuter-background);
+
+  opacity: 0.8;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.select-image-container input {
+  display: none;
+}

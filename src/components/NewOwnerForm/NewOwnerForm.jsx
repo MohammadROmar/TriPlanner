@@ -2,7 +2,12 @@ import { useState } from "react";
 
 import Roles from "../Roles.jsx";
 import Input from "../Input/Input.jsx";
+import Modal from "../UI/OpenedModal/OpenedModal.jsx";
 import NewOwnerFormActions from "../NewOwnerFormActions.jsx";
+
+import UserIcon from "../../assets/icons/User.jsx";
+import EmailIcon from "../../assets/icons/Email.jsx";
+import PasswordIcon from "../../assets/icons/Password.jsx";
 
 import { useInput } from "../../hooks/useInput.js";
 
@@ -15,8 +20,7 @@ import {
 import "./NewOwnerForm.css";
 
 export default function NewOwnerForm() {
-  const [selectedRole, setSelectedRole] = useState();
-
+  const [selectedRole, setSelectedRole] = useState("");
   const [emailIsValid, setEmailIsValid] = useState(true);
   const [passwordIsValid, setPasswordIsValid] = useState(true);
 
@@ -54,51 +58,48 @@ export default function NewOwnerForm() {
   }
 
   return (
-    <>
-      <div id="modal-content">
-        <div id="create-owner-header">
-          <h2 className="create-owner-title">Create Service Owner</h2>
-          <div className="divider"></div>
-        </div>
-        <form className="create-owner-form">
-          <Input
-            id="user-name"
-            name="User Name"
-            type="text"
-            onChange={handleUserNameChange}
-            onBlur={handleUserNameBlur}
-            error={userNameHasError && "User name should not be empty."}
-          />
-          <Input
-            name="email"
-            onChange={(event) => {
-              setEmailIsValid(true);
-              handleEmailChange(event);
-            }}
-            onBlur={handleEmailBlur}
-            error={
-              (emailHasError || !emailIsValid) &&
-              "Please enter a valid Email Address."
-            }
-          />
-          <Input
-            name="password"
-            onChange={(event) => {
-              setPasswordIsValid(true);
-              handlePasswordChange(event);
-            }}
-            onBlur={handlePasswordBlur}
-            error={
-              (passwordHasError || !passwordIsValid) &&
-              "Password should contain numbers, poth capital & small letters and special characters."
-            }
-          />
-          <Roles
-            value={selectedRole}
-            onChange={(value) => setSelectedRole(value)}
-          />
-        </form>
-      </div>
+    <Modal title="Create Service Owner">
+      <form className="create-owner-form">
+        <Input
+          type="text"
+          name="user-name"
+          icon={UserIcon}
+          onBlur={handleUserNameBlur}
+          onChange={handleUserNameChange}
+          error={userNameHasError && "User name should not be empty."}
+        />
+        <Input
+          name="email"
+          onChange={(event) => {
+            setEmailIsValid(true);
+            handleEmailChange(event);
+          }}
+          icon={EmailIcon}
+          onBlur={handleEmailBlur}
+          error={
+            (emailHasError || !emailIsValid) &&
+            "Please enter a valid Email Address."
+          }
+        />
+        <Input
+          name="password"
+          icon={PasswordIcon}
+          onChange={(event) => {
+            setPasswordIsValid(true);
+            handlePasswordChange(event);
+          }}
+          onBlur={handlePasswordBlur}
+          error={
+            (passwordHasError || !passwordIsValid) &&
+            "Password should contain numbers, poth capital & small letters and special characters."
+          }
+        />
+        <Roles
+          value={selectedRole}
+          onChange={(value) => setSelectedRole(value)}
+        />
+      </form>
+
       <NewOwnerFormActions
         ownerDetails={{
           hasError: userNameHasError || emailHasError || passwordHasError,
@@ -109,6 +110,6 @@ export default function NewOwnerForm() {
         }}
         onConfirm={onConfirm}
       />
-    </>
+    </Modal>
   );
 }

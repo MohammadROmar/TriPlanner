@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 
 import ServiceType from "../../components/ServiceType/ServiceType.jsx";
+import ErrorElement from "../../components/UI/ErrorElement/ErrorElement.jsx";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner.jsx";
 
 import { setServiceTypeId } from "../../store/slices/service.js";
@@ -15,33 +16,29 @@ export default function ServiceTypes() {
 
   const { data, isLoading, error, isError } = useQuery({
     queryKey: ["service types", "governorates"],
-    queryFn: () =>
-      get(
-        "SeededValues/ServiceTypes",
-        "An Error occured while fetching service types."
-      ),
+    queryFn: () => get("SeededValues/ServiceTypes"),
   });
 
-  let content;
-
   if (isLoading) {
-    content = <LoadingSpinner />;
+    return <LoadingSpinner />;
   }
 
   if (isError) {
-    content = <p>{error.info || error.message}</p>;
+    return <ErrorElement />;
   }
 
   if (data) {
-    content = data.map((serviceType, index) => (
-      <ServiceType
-        key={serviceType.id}
-        title={serviceType.name}
-        background={cardColors[index % 4].color}
-        onClick={() => dispatch(setServiceTypeId(serviceType.id))}
-      />
-    ));
+    return (
+      <ul className="service-types">
+        {data.serviceTypes.map((serviceType, index) => (
+          <ServiceType
+            key={serviceType.id}
+            title={serviceType.name}
+            background={cardColors[index % 4].color}
+            onClick={() => dispatch(setServiceTypeId(serviceType.id))}
+          />
+        ))}
+      </ul>
+    );
   }
-
-  return <ul className="service-types">{content}</ul>;
 }

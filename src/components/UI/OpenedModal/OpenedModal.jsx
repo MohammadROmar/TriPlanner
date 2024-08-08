@@ -1,14 +1,10 @@
 import { useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { useNavigate } from "react-router-dom";
 
-import NewOwnerForm from "../NewOwnerForm/NewOwnerForm.jsx";
+import "./OpenedModal.css";
 
-import "./NewServiceOwner.css";
-
-export default function NewServiceOwner() {
+export default function OpenedModal({ title, children }) {
   const dialog = useRef();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const modal = dialog.current;
@@ -21,7 +17,11 @@ export default function NewServiceOwner() {
 
   return createPortal(
     <dialog ref={dialog} className="modal">
-      <NewOwnerForm />
+      <div id="opened-modal-header">
+        <h2 className="opened-modal-title">{title}</h2>
+        <div className="divider"></div>
+      </div>
+      {children}
     </dialog>,
     document.getElementById("modal")
   );

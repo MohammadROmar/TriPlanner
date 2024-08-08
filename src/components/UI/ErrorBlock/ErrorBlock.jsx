@@ -5,9 +5,10 @@ import "./ErrorBlock.css";
 export default function ErrorBlock({ title, message }) {
   return (
     <motion.div
-      initial={{ opacity: 0, height: 0, y: -15 }}
-      animate={{ opacity: 1, height: "auto", y: 0 }}
-      exit={{ opacity: 0, height: 0, y: -15 }}
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.5, type: "spring" }}
       className="error-block"
     >
       <div className="error-block-icon">!</div>

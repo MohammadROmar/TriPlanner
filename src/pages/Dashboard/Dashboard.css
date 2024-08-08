@@ -53,6 +53,10 @@
   margin-left: 0.5rem;
 }
 
+.recharts-tooltip-cursor {
+  fill: #327bf04c;
+}
+
 @media (min-width: 37rem) {
   #new-customers {
     margin: 1rem;

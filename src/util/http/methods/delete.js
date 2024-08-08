@@ -16,7 +16,7 @@ export async function deleteFn(path, errorMessage) {
     throw error;
   }
 
-  const responseBody = await response.json();
+  // const responseBody = await response.json();
 
-  return responseBody;
+  // return responseBody;
 }

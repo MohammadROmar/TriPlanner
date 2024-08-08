@@ -9,6 +9,7 @@ import MobileIcon from "../../assets/icons/Mobile.jsx";
 import RestaurantIcon from "../../assets/icons/Restaurant.jsx";
 
 import { get } from "../../util/http/methods/get.js";
+import { separateString } from "../../util/separateString.js";
 import { cardColors } from "../../data/colors.js";
 
 import "./UsersCount.css";
@@ -48,7 +49,7 @@ export default function UsersCount() {
           </div>
           <div>
             <p className="user-type" style={{ color }}>
-              {userCount.typeName}
+              {separateString(userCount.typeName) + "s"}
             </p>
             <p className="users-count" style={{ color }}>
               {userCount.numberOfType}
@@ -57,6 +58,7 @@ export default function UsersCount() {
         </li>
       );
     });
+
     return <ul id="total-users">{totalUsers}</ul>;
   }
 }

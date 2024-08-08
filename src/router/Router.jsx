@@ -15,7 +15,9 @@ import GovernoratesPage from "../pages/Governorates/Governorates.jsx";
 import SubServicesPage from "../pages/SubServices/SubServices.jsx";
 import DetailsPage from "../pages/Details/Details.jsx";
 import ServiceTypesPage from "../pages/ServiceTypes/ServiceTypes.jsx";
-import NewServiceOwner from "../components/NewServiceOwner/NewServiceOwner.jsx";
+import NewOwnerForm from "../components/NewOwnerForm/NewOwnerForm.jsx";
+import FillWallet from "../components/FillWallet/FillWallet.jsx";
+import NewService from "../components/NewService/NewService.jsx";
 
 import { authLoader, unauthLoader } from "../util/auth.js";
 
@@ -32,9 +34,17 @@ const router = createBrowserRouter([
         children: [
           {
             path: "createServiceOwner",
-            element: <NewServiceOwner />,
+            element: <NewOwnerForm />
           },
-        ],
+          {
+            path: "fillUserWallet",
+            element: <FillWallet />
+          },
+          {
+            path: "fillUserWallet/createService",
+            element: <NewService />
+          }
+        ]
       },
       {
         path: "governorates",
@@ -45,19 +55,19 @@ const router = createBrowserRouter([
           { path: ":covId/:serviceType", element: <ServicesPage /> },
           {
             path: ":covId/:serviceType/:serviceName",
-            element: <SubServicesPage />,
+            element: <SubServicesPage />
           },
           {
             path: ":covId/:serviceType/:serviceName/:subserviceDetails",
-            element: <DetailsPage />,
-          },
-        ],
+            element: <DetailsPage />
+          }
+        ]
       },
       { path: "statistics", element: <DashboardPage /> },
       { path: "favorite", element: <FavoritePage /> },
       { path: "settings", element: <SettingsPage /> },
-      { path: "logout", element: <LogoutPage /> },
-    ],
+      { path: "logout", element: <LogoutPage /> }
+    ]
   },
   {
     path: "/welcome",
@@ -66,9 +76,9 @@ const router = createBrowserRouter([
     loader: unauthLoader,
     children: [
       { index: true, element: <StartPage /> },
-      { path: "login", element: <RegisterPage /> },
-    ],
-  },
+      { path: "login", element: <RegisterPage /> }
+    ]
+  }
 ]);
 
 export default function Router() {
