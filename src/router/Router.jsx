@@ -41,7 +41,7 @@ const router = createBrowserRouter([
             element: <FillWallet />
           },
           {
-            path: "fillUserWallet/createService",
+            path: "createServiceOwner/addService",
             element: <NewService />
           }
         ]

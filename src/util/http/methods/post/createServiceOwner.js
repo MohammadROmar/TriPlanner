@@ -1,6 +1,6 @@
 import { domain, headers } from "../../http.js";
 
-export async function createServiceOwner({ path, data, errorMessage }) {
+export async function createServiceOwner({ path, data }) {
   const url = domain + path;
 
   const response = await fetch(url, {

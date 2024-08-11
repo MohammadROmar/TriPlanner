@@ -11,3 +11,23 @@
   left: 0.5rem;
   bottom: 0.5rem;
 }
+
+.service-rating {
+  display: flex;
+  align-items: center;
+
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.service-rating p {
+  width: auto;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.service-rating svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}

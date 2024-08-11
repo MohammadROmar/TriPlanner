@@ -27,7 +27,7 @@ export default function RootLayout() {
           key={location.pathname
             .replace("createServiceOwner", "")
             .replace("fillUserWallet", "")
-            .replace("/createService", "")}
+            .replace("/addService", "")}
           id="root-page"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

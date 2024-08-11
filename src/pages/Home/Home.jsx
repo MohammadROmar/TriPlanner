@@ -34,7 +34,7 @@ export default function Home() {
 
         <li>
           <Card
-            to="fillUserWallet/createService"
+            to="createServiceOwner/addService"
             background={`url(${serviceImg}) center /cover no-repeat border-box`}
           >
             <p>Create Service</p>

@@ -1,8 +1,12 @@
+import { useState } from "react";
+
 import PictureIcon from "../../assets/icons/Picture.jsx";
 
 import "./ImageSelector.css";
 
-export default function ImageSelector({ value, onChange }) {
+export default function ImageSelector() {
+  const [image, setImage] = useState();
+
   function handleImageChange(event) {
     const image = event.target.files[0];
 
@@ -11,7 +15,7 @@ export default function ImageSelector({ value, onChange }) {
       fileReader.readAsDataURL(image);
 
       fileReader.onloadend = () => {
-        onChange(fileReader.result);
+        setImage(fileReader.result);
       };
     }
   }
@@ -19,7 +23,7 @@ export default function ImageSelector({ value, onChange }) {
   return (
     <fieldset
       className="select-image-container"
-      style={value && { backgroundImage: `url(${value})` }}
+      style={image && { backgroundImage: `url(${image})` }}
     >
       <legend>Image</legend>
       <input

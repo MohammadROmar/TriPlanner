@@ -1,16 +1,26 @@
-import { useMutation } from "@tanstack/react-query";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 
 import ErrorBlock from "./UI/ErrorBlock/ErrorBlock.jsx";
 
 import { createServiceOwner } from "../util/http/methods/post/createServiceOwner.js";
+import { set } from "../store/slices/owner.js";
+import { showSnackbar } from "../store/slices/snackbar.js";
 
 export default function NewOwnerFormActions({ ownerDetails, onConfirm }) {
   const navigate = useNavigate();
 
-  const { mutate, isPending, isError, error } = useMutation({
+  const dispatch = useDispatch();
+
+  const { mutate, isPending, isError } = useMutation({
     mutationFn: createServiceOwner,
-    onSuccess: () => navigate("../"),
+    onSuccess: (data) => {
+      dispatch(set({ id: data.newOwnerId, role: ownerDetails.role }));
+      dispatch(showSnackbar({ message: "Owner Created Successfully" }));
+
+      navigate("addService");
+    },
   });
 
   function handleConfirm() {
@@ -24,7 +34,10 @@ export default function NewOwnerFormActions({ ownerDetails, onConfirm }) {
         role: ownerDetails.role,
       };
 
-      mutate({ path: "Account/RegisterServiceOwner", data });
+      const ownerId = mutate({
+        path: "Account/RegisterServiceOwner",
+        data,
+      });
     }
   }
 

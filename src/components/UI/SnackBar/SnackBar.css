@@ -1,6 +1,7 @@
 .snack-bar {
   width: calc(100vw - 2rem);
-  height: 2.5rem;
+  max-width: 38rem;
+  min-height: 2.5rem;
 
   margin: 0 1rem;
 
@@ -8,16 +9,36 @@
   bottom: 1rem;
   z-index: 10;
 
-  background: #333;
+  background: var(--color-success-background);
   border-radius: 0.3rem;
   box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.5);
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.snack-bar svg {
+  min-width: 1.5rem;
+  max-width: 1.5rem;
+  min-height: 1.5rem;
+  max-height: 1.5rem;
+
+  margin-left: 0.5rem;
 }
 
 .snack-bar p {
-  padding: 0.5rem;
-  color: white;
+  margin: 0.5rem 0.25rem;
+  color: var(--color-success);
+}
+
+@media (min-width: 40rem) {
+  .snack-bar {
+    min-width: clac(50vw - 1rem);
+    max-width: clac(50vw - 1rem);
+
+    left: auto;
+    right: 0.5rem;
+    bottom: 1rem;
+  }
 }

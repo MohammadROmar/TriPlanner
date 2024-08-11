@@ -1,7 +1,11 @@
 #select-roles {
+  width: 100%;
   height: 2.5rem;
-  border: 0.1rem solid var(--color-neuter);
   border-radius: 0.5rem;
+  padding: 0 0.25rem 0 0.25rem;
+
+  color: var(--color-neuter);
+  border: 0.1rem solid var(--color-neuter);
 }
 
 #select-roles:focus {
@@ -25,10 +29,7 @@
   align-items: center;
 }
 
-.select-roles {
-  width: 100%;
-  display: block;
-  padding: 0 0.25rem 0 0.25rem;
-
-  color: var(--color-neuter);
+.error #select-roles {
+  color: var(--color-danger);
+  border-color: var(--color-danger);
 }

@@ -10,6 +10,7 @@
 }
 
 .input-label {
+  display: block;
   font-size: 1rem;
   color: var(--color-neuter);
 }
@@ -57,6 +58,10 @@
 .input-field.error::placeholder {
   color: var(--color-danger);
   border-color: var(--color-danger);
+}
+
+.error label {
+  color: var(--color-danger);
 }
 
 .input-error {

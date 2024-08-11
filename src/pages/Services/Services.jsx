@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import EmptyPage from "../../components/EmptyPage.jsx";
 import Service from "../../components/Service/Service.jsx";
+import ErrorElement from "../../components/UI/ErrorElement/ErrorElement.jsx";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner.jsx";
 
 import { setService } from "../../store/slices/service.js";
@@ -12,15 +13,15 @@ import "./Services.css";
 
 export default function ServicesPage() {
   const dispatch = useDispatch();
-  const governorateId = useSelector(state => state.service.governorateId);
-  const serviceTypeId = useSelector(state => state.service.serviceTypeId);
+  const governorateId = useSelector((state) => state.service.governorateId);
+  const serviceTypeId = useSelector((state) => state.service.serviceTypeId);
 
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["services", "service types", "governorates"],
     queryFn: () =>
       get(
         `governorates/${governorateId}/services/serviceTypes/${serviceTypeId}`
-      )
+      ),
   });
 
   if (isLoading) {
@@ -36,13 +37,16 @@ export default function ServicesPage() {
       return <EmptyPage />;
     }
 
+    console.log(data);
+
     return (
       <ul className="services">
-        {data.map(service => (
+        {data.map((service) => (
           <Service
             key={service.id}
             title={service.name}
             subtitle={service.address}
+            overallRate={service.overallRate}
             onClick={() => dispatch(setService(service))}
           />
         ))}

@@ -1,12 +1,17 @@
 #error {
+  width: 100vw;
   min-height: 100dvh;
+
   padding: 0.5rem;
   text-align: center;
-  background: var(--color-background);
+
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+
+  overflow: hidden;
+  background: var(--color-background);
 }
 
 #error img {
@@ -20,5 +25,10 @@
 }
 
 #error p {
+  width: 100%;
+
   color: var(--color-text);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

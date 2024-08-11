@@ -13,15 +13,15 @@ import "./SubServices.css";
 
 export default function SubServices() {
   const dispatch = useDispatch();
-  const service = useSelector(state => state.service.service);
-  const serviceTypeId = useSelector(state => state.service.serviceTypeId);
+  const service = useSelector((state) => state.service.service);
+  const serviceTypeId = useSelector((state) => state.service.serviceTypeId);
 
   const serviceTypeName =
     serviceTypeId === 1 ? "rooms" : serviceTypeId === 2 ? "cars" : "trips";
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["subservices", "services"],
-    queryFn: () => get(`services/${service.id}/${serviceTypeName}`)
+    queryFn: () => get(`services/${service.id}/${serviceTypeName}`),
   });
 
   if (isLoading) {
@@ -37,9 +37,11 @@ export default function SubServices() {
       return <EmptyPage />;
     }
 
+    console.log(data);
+
     return (
       <ul className="sub-services">
-        {data.map(subservice => (
+        {data.map((subservice) => (
           <Subservice
             key={subservice.id}
             title={
@@ -49,6 +51,7 @@ export default function SubServices() {
                 ? subservice.name
                 : subservice.description
             }
+            imagePath={subservice.imagePath}
             onClick={() => dispatch(setSubservice(subservice))}
           />
         ))}

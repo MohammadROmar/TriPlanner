@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useInput } from "../../hooks/useInput.js";
 
 import Roles from "../Roles.jsx";
 import Input from "../Input/Input.jsx";
@@ -8,8 +9,6 @@ import NewOwnerFormActions from "../NewOwnerFormActions.jsx";
 import UserIcon from "../../assets/icons/User.jsx";
 import EmailIcon from "../../assets/icons/Email.jsx";
 import PasswordIcon from "../../assets/icons/Password.jsx";
-
-import { useInput } from "../../hooks/useInput.js";
 
 import {
   isEmpty,
@@ -21,6 +20,7 @@ import "./NewOwnerForm.css";
 
 export default function NewOwnerForm() {
   const [selectedRole, setSelectedRole] = useState("");
+  const [roleIsValid, setRoleIsValid] = useState(true);
   const [emailIsValid, setEmailIsValid] = useState(true);
   const [passwordIsValid, setPasswordIsValid] = useState(true);
 
@@ -54,6 +54,10 @@ export default function NewOwnerForm() {
 
     if (emailIsInvalid) {
       setEmailIsValid(false);
+    }
+
+    if (selectedRole === "") {
+      setRoleIsValid(false);
     }
   }
 
@@ -95,14 +99,22 @@ export default function NewOwnerForm() {
           }
         />
         <Roles
+          error={!roleIsValid}
           value={selectedRole}
-          onChange={(value) => setSelectedRole(value)}
+          onChange={(value) => {
+            setRoleIsValid(true);
+            setSelectedRole(value);
+          }}
         />
       </form>
-
+      {/* <div className="input"></div> */}
       <NewOwnerFormActions
         ownerDetails={{
-          hasError: userNameHasError || emailHasError || passwordHasError,
+          hasError:
+            userNameHasError ||
+            emailHasError ||
+            passwordHasError ||
+            !roleIsValid,
           userName: enteredUserName,
           email: enteredEmail,
           password: enteredPassword,

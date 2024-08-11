@@ -22,9 +22,9 @@ export default function NewServiceActions({ hasInputError, hasSubmitError }) {
             (hasSubmitError && "Couldn't Create Service")
           }
           message={
-            (hasInputError && "Please check your input and try again.") ||
             (hasSubmitError &&
-              "Please check your inputs and connection try again")
+              "Please check your inputs and connection try again") ||
+            (hasInputError && "Please check your input and try again.")
           }
         />
       )}
