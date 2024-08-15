@@ -1,29 +1,23 @@
 import HomeIcon from "../assets/icons/Home.jsx";
-import FavoriteIcon from "../assets/icons/Favorite.jsx";
-import SettingsIcon from "../assets/icons/Settings.jsx";
+import SyriaIcon from "../assets/icons/Syria.jsx";
 import InsightsIcon from "../assets/icons/Insights.jsx";
 
 const TABS = [
   {
     Icon: HomeIcon,
     title: "Home",
-    to: ""
+    to: "",
   },
   {
     Icon: InsightsIcon,
     title: "Statistics",
-    to: "statistics"
+    to: "statistics",
   },
   {
-    Icon: FavoriteIcon,
-    title: "Favorite",
-    to: "favorite"
+    Icon: SyriaIcon,
+    title: "Governorates",
+    to: "governorates",
   },
-  {
-    Icon: SettingsIcon,
-    title: "Settings",
-    to: "settings"
-  }
 ];
 
 export default TABS;
@@ -32,11 +26,11 @@ export const START_TABS = [
   {
     title: "Services",
     // Icon: ,
-    id: "services"
+    id: "services",
   },
   {
     title: "Offers",
     // Icon: ,
-    id: "offers"
-  }
+    id: "offers",
+  },
 ];

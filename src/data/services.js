@@ -1,5 +1,5 @@
 import hotelRoomImg from "../assets/images/hotel_room.jpg";
-import foodImg from "../assets/images/food.jpg";
+import tripImg from "../assets/images/trip-default.jpg";
 import lamborghiniImg from "../assets/images/lamborghini2.jpg";
 
 export const SERVICES = [
@@ -11,11 +11,11 @@ export const SERVICES = [
       "Make your hotel shine in the marketplace: Our partnership means more bookings and ongoing success."
   },
   {
-    image: foodImg,
-    alt: "A table with a different kinds of food",
-    title: "Resturants",
+    image: tripImg,
+    alt: "",
+    title: "Trips & Journeys",
     description:
-      "Dishes that evoke authenticity and dazzle the senses, your restaurant is a destination for all fine dining enthusiasts."
+      "Take people to vist and discover the most amazing places you know."
   },
   {
     image: lamborghiniImg,

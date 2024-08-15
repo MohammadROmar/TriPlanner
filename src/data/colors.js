@@ -54,3 +54,20 @@ export const modalColors = {
     background: "var(--color-danger-background)",
   },
 };
+
+export const areaChartColore = [
+  { stroke: "var(--color-danger)" },
+  { stroke: "var(--color-success)" },
+  { stroke: "var(--color-warning)" },
+  { stroke: "var(--color-neuter)" },
+  { stroke: "var(--color-neuter2)" },
+  { stroke: "black" },
+  { stroke: "blue" },
+  { stroke: "red" },
+  { stroke: "purple" },
+  { stroke: "pink" },
+  { stroke: "var(--color-primary__light)" },
+  { stroke: "var(--color-primary)" },
+  { stroke: "#37ff00" },
+  { stroke: "rgb(136, 0, 255)" },
+];

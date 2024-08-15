@@ -5,9 +5,9 @@ import ServiceType from "../../components/ServiceType/ServiceType.jsx";
 import ErrorElement from "../../components/UI/ErrorElement/ErrorElement.jsx";
 import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner.jsx";
 
-import { setServiceTypeId } from "../../store/slices/service.js";
-import { get } from "../../util/http/methods/get.js";
 import { cardColors } from "../../data/colors.js";
+import { get } from "../../util/http/methods/get.js";
+import { setServiceTypeId } from "../../store/slices/service.js";
 
 import "./ServiceTypes.css";
 

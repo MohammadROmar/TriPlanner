@@ -1,0 +1,106 @@
+#dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+#new-users {
+  padding: 0 0.5rem;
+  margin-top: 0.5rem;
+  background: var(--color-card);
+  border-radius: 0.5rem;
+}
+
+#dashboard p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--color-primary__light);
+  font-family: Ubuntu-Bold, sans-serif;
+}
+
+#statistics {
+  height: 62.5rem;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#statistics .container {
+  width: 100%;
+  font-size: 0.7rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#statistics .inner-container {
+  width: 100%;
+  height: 20rem;
+  margin: 0.5rem 0;
+  background: var(--color-card);
+  border-radius: 0.5rem;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#statistics .last-container {
+  width: 100%;
+  height: 20rem;
+  font-size: 0.7rem;
+  background: var(--color-card);
+  border-radius: 0.5rem;
+}
+
+#statistics p {
+  margin-left: 0.5rem;
+}
+
+.recharts-tooltip-cursor {
+  fill: #327bf04c;
+}
+
+@media (min-width: 37rem) {
+  #new-customers {
+    margin: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .customer {
+    width: 23.5%;
+    height: 11rem;
+  }
+
+  #statistics {
+    height: 43rem;
+  }
+
+  #statistics .container {
+    background: var(--color-card);
+    border-radius: 0.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #statistics .inner-container {
+    width: 48%;
+    background: none;
+  }
+
+  #statistics .last-container {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 53.5rem) {
+  .customer {
+    height: 10rem;
+  }
+
+  #statistics .container {
+    font-size: 1.2rem;
+  }
+}

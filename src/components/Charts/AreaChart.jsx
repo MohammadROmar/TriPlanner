@@ -12,8 +12,8 @@ export default function CustomAreaChart({ data, colors }) {
           key={v4()}
           type="monotone"
           dataKey={area}
-          stroke={colors[index - 1].stroke}
-          fill={colors[index - 1].fill}
+          stroke={colors[(index - 1) % 5].stroke}
+          fill={colors[(index - 1) % 5].fill}
           stackId="1"
         />
       );

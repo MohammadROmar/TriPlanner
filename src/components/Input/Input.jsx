@@ -1,7 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 
-import TempIcon from "../../assets/icons/Mobile.jsx";
-
 import { formateInputLabel } from "../../util/formateInputLabel.js";
 
 import "./Input.css";

@@ -1,12 +1,17 @@
-import { domain, headers } from "../../http.js";
+import { domain } from "../../http.js";
 
 export async function post({ path, data, errorMessage }) {
-  const url = domain + path;
+  const url = domain + "api/" + path;
+
+  const token = localStorage.getItem("token");
 
   const response = await fetch(url, {
     method: "POST",
     body: JSON.stringify(data),
-    headers,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   });
 
   if (!response.ok) {

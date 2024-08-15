@@ -11,7 +11,6 @@ export default function Roles({ error, value, onChange }) {
   });
 
   let content;
-  console.log(error);
 
   if (isLoading) {
     content = <p style={{ margin: "0.25rem" }}>Loading...</p>;

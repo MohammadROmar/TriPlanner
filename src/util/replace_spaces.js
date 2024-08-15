@@ -1,3 +1,3 @@
 export function replaceSpaces(string) {
-  return string.replace(" ", "_");
+  return string.replaceAll(" ", "_");
 }

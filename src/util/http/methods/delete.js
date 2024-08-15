@@ -1,11 +1,16 @@
-import { domain, headers } from "../http.js";
+import { domain } from "../http.js";
 
 export async function deleteFn(path, errorMessage) {
-  const url = domain + path;
+  const url = domain + "api/" + path;
+
+  const token = localStorage.getItem("token");
 
   const response = await fetch(url, {
     method: "DELETE",
-    headers,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   });
 
   if (!response.ok) {
@@ -15,8 +20,4 @@ export async function deleteFn(path, errorMessage) {
 
     throw error;
   }
-
-  // const responseBody = await response.json();
-
-  // return responseBody;
 }

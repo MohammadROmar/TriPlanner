@@ -16,6 +16,9 @@ const Modal = forwardRef(function Modal(
       open: () => {
         dialog.current.showModal();
       },
+      close: () => {
+        dialog.current.close();
+      },
     };
   });
 

@@ -33,11 +33,11 @@ export default function ServicesPage() {
   }
 
   if (data) {
+    console.log(data);
+
     if (data.length === 0) {
       return <EmptyPage />;
     }
-
-    console.log(data);
 
     return (
       <ul className="services">
@@ -46,6 +46,7 @@ export default function ServicesPage() {
             key={service.id}
             title={service.name}
             subtitle={service.address}
+            imagePath={service.imagePath}
             overallRate={service.overallRate}
             onClick={() => dispatch(setService(service))}
           />

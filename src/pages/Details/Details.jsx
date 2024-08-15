@@ -8,6 +8,8 @@ import Heading from "./Heading/Heading.jsx";
 
 import hotelImg from "../../assets/images/hotel_room.jpg";
 
+import { formatImagePath } from "../../util/formatImagePath.js";
+
 import "./Details.css";
 
 export default function DetailsPage() {
@@ -19,7 +21,11 @@ export default function DetailsPage() {
       <div
         className="details-image"
         style={{
-          background: `url(${hotelImg}) center /cover no-repeat border-box`,
+          background: `url(${
+            subservice.imagePath
+              ? formatImagePath(subservice.imagePath)
+              : hotelImg
+          }) center /cover no-repeat border-box`,
         }}
       />
       <div className="details">

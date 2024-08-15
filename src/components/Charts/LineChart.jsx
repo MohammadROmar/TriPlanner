@@ -3,7 +3,7 @@ import { LineChart, Line } from "recharts";
 import Chart from "./Chart.jsx";
 
 export default function CustomLineChart({ data, colors }) {
-  const keys = Object.keys(data[0]).map(key => key);
+  const keys = Object.keys(data[0]).map((key) => key);
   const lines = keys.map((line, index) => {
     if (line !== "name") {
       return (

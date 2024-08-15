@@ -21,7 +21,7 @@ export default function Heading() {
             </div>
           </div>
           <div className="details-rating">
-            <RatingBar rating={4.6} />
+            <RatingBar rating={service.overallRate} />
           </div>
         </section>
         <section className="service-price">

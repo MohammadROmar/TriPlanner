@@ -1,3 +1,4 @@
 #logout-button {
+  font-family: "Ubuntu-Bold";
   color: var(--color-danger);
 }

@@ -1,6 +1,7 @@
 .header-navigation {
   padding: 0;
   margin: 0.5rem;
+  font-family: "Ubuntu-Bold";
   color: var(--color-primary__light);
 }
 

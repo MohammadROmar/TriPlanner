@@ -1,10 +1,15 @@
-import { domain, headers } from "../http.js";
+import { domain } from "../http.js";
 
 export async function get(path, errorMessage) {
-  const url = domain + path;
+  const url = domain + "api/" + path;
+
+  const token = localStorage.getItem("token");
 
   const response = await fetch(url, {
-    headers,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   });
 
   if (!response.ok) {

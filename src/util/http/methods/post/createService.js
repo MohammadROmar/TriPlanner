@@ -1,16 +1,16 @@
-import { domain, authorization as Authorization } from "../../http.js";
+import { domain } from "../../http.js";
 
 export async function createService({ data }) {
   const serviceTypeId =
-    data.ownerRole === "HotelAdmin"
+    data.ownerRole === "HotelOwner"
       ? 1
       : data.ownerRole === "CarRental"
       ? 2
       : 3;
 
-  const url =
-    domain +
-    `governorates/${data.governorate}/services/servicetypes/${serviceTypeId}/add`;
+  const url = domain + `api/governorates/${data.governorate}/services/add`;
+
+  const token = localStorage.getItem("token");
 
   const requestFormData = new FormData();
 
@@ -27,16 +27,13 @@ export async function createService({ data }) {
   requestFormData.append("HasPool", data.features.includes("pool"));
   requestFormData.append("HasRestaurant", data.features.includes("restaurant"));
 
-  const response = await fetch(
-    "https://localhost:7219/api/governorates/1/services/servicetypes/1/add",
-    {
-      method: "POST",
-      headers: {
-        Authorization,
-      },
-      body: requestFormData,
-    }
-  );
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: requestFormData,
+  });
 
   if (!response.ok) {
     const error = new Error(errorMessage || "Faild to post data");

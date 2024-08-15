@@ -8,18 +8,19 @@ import LogoutIcon from "../../assets/icons/Logout.jsx";
 import Modal from "../UI/Modal/Modal.jsx";
 import { authActions } from "../../store/slices/auth.js";
 import { backdropActions } from "../../store/slices/backdrop.js";
+
 import "./LogoutItem.css";
 
 export default function LogoutItem({ type }) {
   const dialog = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const backdropIsOpen = useSelector(state => state.backdrop.isOpen);
-  
+  const backdropIsOpen = useSelector((state) => state.backdrop.isOpen);
+
   function handleTabClick() {
     dispatch(backdropActions.toggle());
   }
-  
+
   function handleLogout() {
     handleTabClick();
     dialog.current.open();
@@ -29,7 +30,7 @@ export default function LogoutItem({ type }) {
     dispatch(authActions.logout());
     navigate("/welcome");
   }
-  
+
   return (
     <>
       <Modal ref={dialog} title="Logout" onConfirm={handleConfirm} isAlert>
@@ -39,13 +40,15 @@ export default function LogoutItem({ type }) {
         <li className="side-bar__item">
           <AnimatedButton onClick={handleLogout}>
             <LogoutIcon />
-              <span>Logout</span>
+            <span>Logout</span>
           </AnimatedButton>
         </li>
-      )} 
+      )}
       {type === "header" && (
         <AnimatedListItem>
-            <button id="logout-button" onClick={handleLogout}>Logout</button>
+          <button id="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
         </AnimatedListItem>
       )}
     </>

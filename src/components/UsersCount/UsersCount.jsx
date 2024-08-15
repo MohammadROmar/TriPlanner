@@ -3,10 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner.jsx";
 
 import CarIcon from "../../assets/icons/Car.jsx";
-import AdminIcon from "../../assets/icons/Car.jsx";
+import AdminIcon from "../../assets/icons/Admin.jsx";
 import HotelIcon from "../../assets/icons/Hotel.jsx";
+import TripIcon from "../../assets/icons/Trip.jsx";
 import MobileIcon from "../../assets/icons/Mobile.jsx";
-import RestaurantIcon from "../../assets/icons/Restaurant.jsx";
 
 import { get } from "../../util/http/methods/get.js";
 import { separateString } from "../../util/separateString.js";
@@ -36,7 +36,7 @@ export default function UsersCount() {
           : userCount.typeName === "HotelOwner"
           ? HotelIcon
           : userCount.typeName === "TourismOffice"
-          ? RestaurantIcon
+          ? TripIcon
           : userCount.typeName === "CarRental"
           ? CarIcon
           : AdminIcon;

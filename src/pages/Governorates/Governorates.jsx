@@ -17,7 +17,7 @@ export default function Governorates() {
 
   const { data, isError, isLoading } = useQuery({
     queryKey: ["governorates"],
-    queryFn: () => get("SeededValues/Governorates")
+    queryFn: () => get("SeededValues/Governorates"),
   });
 
   if (isLoading) {

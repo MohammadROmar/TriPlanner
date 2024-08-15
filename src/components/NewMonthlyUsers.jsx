@@ -10,6 +10,7 @@ import {
 } from "../util/getPrevMonths.js";
 import { chartColors } from "../data/colors";
 import { get } from "../util/http/methods/get";
+import { formatUsersData } from "../util/formatUsersData.js";
 
 export default function NewMonthlyUsers() {
   const {
@@ -58,31 +59,12 @@ export default function NewMonthlyUsers() {
       </p>
     );
   }
-
   if (curruntMonthData && prevMonthData && secoundPrevMonthData) {
-    const pastThreeMonthsUsers = [
-      {
-        name: `${secondPrevMonth.month}/${secondPrevMonth.year}`,
-      },
-      {
-        name: `${prevMonth.month}/${prevMonth.year}`,
-      },
-      {
-        name: `${currMonth.month}/${currMonth.year}`,
-      },
-    ];
-
-    for (const userType of secoundPrevMonthData) {
-      pastThreeMonthsUsers[0][userType.typeName] = userType.numberOfType;
-    }
-
-    for (const userType of prevMonthData) {
-      pastThreeMonthsUsers[1][userType.typeName] = userType.numberOfType;
-    }
-
-    for (const userType of curruntMonthData) {
-      pastThreeMonthsUsers[2][userType.typeName] = userType.numberOfType;
-    }
+    const pastThreeMonthsUsers = formatUsersData(
+      curruntMonthData,
+      prevMonthData,
+      secoundPrevMonthData
+    );
 
     return <BarChart data={pastThreeMonthsUsers} colors={chartColors} />;
   }

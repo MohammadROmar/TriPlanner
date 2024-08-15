@@ -10,6 +10,7 @@ import { setSubservice } from "../../store/slices/service.js";
 import { get } from "../../util/http/methods/get.js";
 
 import "./SubServices.css";
+import DeleteServiceBtn from "../../components/DeleteServiceBtn/DeleteServiceBtn.jsx";
 
 export default function SubServices() {
   const dispatch = useDispatch();
@@ -34,28 +35,35 @@ export default function SubServices() {
 
   if (data) {
     if (data.length === 0) {
-      return <EmptyPage />;
+      return (
+        <>
+          {" "}
+          <DeleteServiceBtn />
+          <EmptyPage />
+        </>
+      );
     }
 
-    console.log(data);
-
     return (
-      <ul className="sub-services">
-        {data.map((subservice) => (
-          <Subservice
-            key={subservice.id}
-            title={
-              subservice.title !== undefined
-                ? subservice.title
-                : subservice.name !== undefined
-                ? subservice.name
-                : subservice.description
-            }
-            imagePath={subservice.imagePath}
-            onClick={() => dispatch(setSubservice(subservice))}
-          />
-        ))}
-      </ul>
+      <>
+        <DeleteServiceBtn />
+        <ul className="sub-services">
+          {data.map((subservice) => (
+            <Subservice
+              key={subservice.id}
+              title={
+                subservice.title !== undefined
+                  ? subservice.title
+                  : subservice.name !== undefined
+                  ? subservice.name
+                  : subservice.description
+              }
+              imagePath={subservice.imagePath}
+              onClick={() => dispatch(setSubservice(subservice))}
+            />
+          ))}
+        </ul>
+      </>
     );
   }
 }

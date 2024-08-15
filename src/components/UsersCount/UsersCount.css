@@ -1,4 +1,5 @@
 #total-users {
+  width: 100%;
   list-style: none;
   padding: none;
   display: flex;

@@ -1,0 +1,5 @@
+.delete-service {
+  width: 100%;
+
+  background: var(--color-danger);
+}

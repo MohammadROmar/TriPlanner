@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
@@ -8,10 +8,14 @@ import Modal from "../../../components/UI/Modal/Modal.jsx";
 import ErrorBlock from "../../../components/UI/ErrorBlock/ErrorBlock.jsx";
 
 import { deleteFn } from "../../../util/http/methods/delete.js";
+import { showSnackbar } from "../../../store/slices/snackbar.js";
+import { capitalizeFirstLetter } from "../../../util/capitalizeFirstLetter.js";
 
 import "./Actions.css";
 
 export default function Actions() {
+  const dispatch = useDispatch();
+
   const serviceId = useSelector((state) => state.service.service.id);
   const subserviceId = useSelector((state) => state.service.subservice.id);
   const serviceTypeId = useSelector((state) => state.service.serviceTypeId);
@@ -21,16 +25,24 @@ export default function Actions() {
 
   const navigate = useNavigate();
 
-  const { mutate, isPending, isError, error } = useMutation({
+  const { mutate, isPending, isError } = useMutation({
     mutationFn: () =>
       deleteFn(
         `services/${serviceId}/${serviceTypeName}s/${subserviceId}`,
         "An error occured while deleting this subservice."
       ),
-    onSuccess: () =>
+    onSuccess: () => {
       navigate("../", {
         relative: "path",
-      }),
+      });
+      dispatch(
+        showSnackbar({
+          message: `${capitalizeFirstLetter(
+            serviceTypeName
+          )} Deleted Successfully`,
+        })
+      );
+    },
   });
 
   const dialog = useRef();
@@ -42,8 +54,6 @@ export default function Actions() {
   function handleDelete() {
     dialog.current.open();
   }
-
-  function handleEdit() {}
 
   let content;
 
@@ -81,9 +91,6 @@ export default function Actions() {
       <div className="details-actions">
         <button className="details__delete" onClick={handleDelete}>
           Delete
-        </button>
-        <button className="details__edit" onClick={handleEdit}>
-          Edit
         </button>
       </div>
     </>
