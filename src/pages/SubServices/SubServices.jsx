@@ -48,20 +48,22 @@ export default function SubServices() {
       <>
         <DeleteServiceBtn />
         <ul className="sub-services">
-          {data.map((subservice) => (
-            <Subservice
-              key={subservice.id}
-              title={
-                subservice.title !== undefined
-                  ? subservice.title
-                  : subservice.name !== undefined
-                  ? subservice.name
-                  : subservice.description
-              }
-              imagePath={subservice.imagePath}
-              onClick={() => dispatch(setSubservice(subservice))}
-            />
-          ))}
+          {data.map((subservice) => {
+            return (
+              <Subservice
+                key={subservice.id}
+                title={
+                  subservice.title
+                    ? subservice.title
+                    : subservice.name
+                    ? subservice.name
+                    : subservice.description
+                }
+                imagePath={subservice.imagePath}
+                onClick={() => dispatch(setSubservice(subservice))}
+              />
+            );
+          })}
         </ul>
       </>
     );

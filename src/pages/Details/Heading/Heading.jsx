@@ -11,7 +11,15 @@ export default function Heading() {
 
   return (
     <>
-      <h2 className="details__name heading">{service.name}</h2>
+      <h2 className="details__name heading">
+        {`${service.name}${
+          subservice.title
+            ? ", " + subservice.title
+            : subservice.name
+            ? ", " + subservice.name
+            : ""
+        }`}
+      </h2>
       <div className="details-heading">
         <section>
           <div className="details_title">
@@ -23,6 +31,7 @@ export default function Heading() {
           <div className="details-rating">
             <RatingBar rating={service.overallRate} />
           </div>
+          <p>{service.description}</p>
         </section>
         <section className="service-price">
           <p>

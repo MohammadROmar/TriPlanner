@@ -1,22 +1,21 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import Backdrop from "../UI/Backdrop/Backdrop.jsx";
-import MainTitle from "./MainTitle/MainTitle.jsx";
-import HeaderNavigation from "./HeaderNavigation/HeaderNavigation.jsx";
 import Theme from "../Theme/Theme.jsx";
-import { authActions } from "../../store/slices/auth.js";
+import MainTitle from "./MainTitle/MainTitle.jsx";
+import Backdrop from "../UI/Backdrop/Backdrop.jsx";
+import HeaderNavigation from "./HeaderNavigation/HeaderNavigation.jsx";
 
 import "./Header.css";
 
 export default function Header() {
+  const location = useLocation();
+
   const navigate = useNavigate();
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  const dispatch = useDispatch(authActions.login);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   function handleCTA() {
-    dispatch(authActions.login());
-    navigate("/");
+    navigate("login");
   }
 
   return (
@@ -29,8 +28,16 @@ export default function Header() {
           <Theme />
         </div>
         {!isAuthenticated && (
-          <button id="cta" onClick={handleCTA}>
-            Get Started
+          <button
+            id="cta"
+            onClick={handleCTA}
+            style={{
+              display: location.pathname.includes("login")
+                ? "none"
+                : "inline-block",
+            }}
+          >
+            Login
           </button>
         )}
       </header>

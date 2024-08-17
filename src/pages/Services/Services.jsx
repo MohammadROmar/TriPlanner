@@ -33,8 +33,6 @@ export default function ServicesPage() {
   }
 
   if (data) {
-    console.log(data);
-
     if (data.length === 0) {
       return <EmptyPage />;
     }

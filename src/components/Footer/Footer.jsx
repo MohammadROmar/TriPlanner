@@ -22,7 +22,7 @@ export default function Footer() {
       }
     >
       <p>About us.</p>
-      <p>Contact us: </p>
+      <p>Social media: </p>
       <ul id="contact-methods">
         <AnimatedListItem animate={animation} className="contact-method">
           <a href="">

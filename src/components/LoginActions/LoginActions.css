@@ -1,0 +1,39 @@
+.login-actions {
+  width: 100%;
+  /* margin: 0.5rem; */
+  padding-bottom: 0.5rem;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-actions button {
+  margin: 0.25rem;
+  color: var(--color-neuter);
+}
+
+.login-btn {
+  margin-right: 0.5rem !important;
+  padding: 0.25rem 0.5rem;
+
+  border-radius: 0.3rem;
+  background: var(--color-neuter);
+  color: var(--color-neuter-background) !important;
+}
+
+.login-submit {
+  height: 2rem;
+
+  font-size: 0.8rem;
+
+  margin-right: 0.5rem;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--color-neuter);
+}
+
+.login-error {
+  margin: 0.5rem;
+}

@@ -1,24 +1,73 @@
-import { Outlet, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { useMutation } from "@tanstack/react-query";
+import { Outlet, useLocation } from "react-router-dom";
 
-import ScrollToTop from "../../components/ScrollToTop.jsx";
-import Header from "../../components/Header/Header.jsx";
-import SideBar from "../../components/SideBar/SideBar.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
+import Header from "../../components/Header/Header.jsx";
+import Modal from "../../components/UI/Modal/Modal.jsx";
+import ScrollToTop from "../../components/ScrollToTop.jsx";
+import SideBar from "../../components/SideBar/SideBar.jsx";
+
+import { refreshTokens, logout } from "../../store/slices/auth.js";
+import { refreshToken } from "../../util/http/methods/post/refreshToken.js";
+
 import "./Root.css";
 
 export default function RootLayout() {
+  const dialog = useRef();
+
+  const diapatch = useDispatch();
+
   const location = useLocation();
 
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  const sideBarIsOpen = useSelector(state => state.backdrop.isOpen);
+  const { mutate } = useMutation({
+    mutationFn: refreshToken,
+    onSuccess: (data) => {
+      diapatch(refreshTokens(data));
+    },
+    onError: () => {
+      dialog.current.open();
+    },
+  });
+
+  const expires = useSelector((state) => state.auth.expires);
+  const sideBarIsOpen = useSelector((state) => state.backdrop.isOpen);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  const expiresInMilliseconds = parseInt(expires) * 1000 * 60 - 1000 * 60;
+
+  useEffect(() => {
+    const refreshToken = localStorage.getItem("refreshToken");
+    if (refreshToken) {
+      mutate();
+    }
+
+    setInterval(() => {
+      const refresh = localStorage.getItem("refreshToken");
+      if (refresh) {
+        mutate();
+      }
+    }, expiresInMilliseconds);
+  }, []);
 
   const cssClasses =
     (sideBarIsOpen ? "active" : "") + (!isAuthenticated ? "hidden" : "");
 
   return (
     <>
+      <Modal
+        ref={dialog}
+        isAlert
+        title="Session Has ended!"
+        onConfirm={() => {
+          diapatch(logout());
+        }}
+      >
+        <p>Please click logout and try loging in again</p>
+      </Modal>
+
       <ScrollToTop />
       <Header />
       {isAuthenticated && <SideBar />}
