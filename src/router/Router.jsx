@@ -1,66 +1,63 @@
-import { useSelector } from "react-redux";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import HomePage from "../pages/Home/Home.jsx";
-import GridPage from "../pages/Grid/Grid.jsx";
-import RootLayout from "../pages/Root/Root.jsx";
-import ErrorPage from "../pages/Error/Error.jsx";
-import LoginPage from "../pages/Login/Login.jsx";
-import StartPage from "../pages/Start/Start.jsx";
-import ServicesPage from "../pages/Services/Services.jsx";
-import StatisticsPage from "../pages/Statistics/Statistics.jsx";
-import FillWallet from "../components/FillWallet/FillWallet.jsx";
-import NewService from "../components/NewService/NewService.jsx";
-import SubServicesPage from "../pages/SubServices/SubServices.jsx";
-import GovernoratesPage from "../pages/Governorates/Governorates.jsx";
-import DetailsPage from "../pages/Details/Details.jsx";
-import ServiceTypesPage from "../pages/ServiceTypes/ServiceTypes.jsx";
-import NewOwnerForm from "../components/NewOwnerForm/NewOwnerForm.jsx";
+import HomePage from '../pages/Home/Home.jsx';
+import GridPage from '../pages/Grid/Grid.jsx';
+import RootLayout from '../pages/Root/Root.jsx';
+import ErrorPage from '../pages/Error/Error.jsx';
+import LoginPage from '../pages/Login/Login.jsx';
+import DetailsPage from '../pages/Details/Details.jsx';
+import LandingPage from '../pages/Landing/Landing.jsx';
+import ServicesPage from '../pages/Services/Services.jsx';
+import StatisticsPage from '../pages/Statistics/Statistics.jsx';
+import FillWallet from '../components/FillWallet/FillWallet.jsx';
+import NewService from '../components/NewService/NewService.jsx';
+import SubServicesPage from '../pages/SubServices/SubServices.jsx';
+import GovernoratesPage from '../pages/Governorates/Governorates.jsx';
+import ServiceTypesPage from '../pages/ServiceTypes/ServiceTypes.jsx';
+import NewOwnerForm from '../components/NewOwnerForm/NewOwnerForm.jsx';
 
-import { authLoader, unauthLoader } from "../util/auth.js";
+import { authLoader, unauthLoader } from '../util/auth.js';
 
 export default function Router() {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: <RootLayout />,
       errorElement: <ErrorPage />,
       loader: authLoader,
       children: [
         {
-          path: "",
+          path: '',
           element: <HomePage />,
           children: [
             {
-              path: "fillUserWallet",
+              path: 'fillUserWallet',
               element: <FillWallet />,
             },
             {
-              path: "createServiceOwner",
+              path: 'createServiceOwner',
               element: <NewOwnerForm />,
             },
             {
-              path: "createServiceOwner/addService",
+              path: 'createServiceOwner/addService',
               element: <NewService />,
             },
           ],
         },
-        { path: "statistics", element: <StatisticsPage /> },
+        { path: 'statistics', element: <StatisticsPage /> },
         {
-          path: "governorates",
+          path: 'governorates',
           element: <GridPage />,
           children: [
             { index: true, element: <GovernoratesPage /> },
-            { path: ":covId", element: <ServiceTypesPage /> },
-            { path: ":covId/:serviceType", element: <ServicesPage /> },
+            { path: ':covId', element: <ServiceTypesPage /> },
+            { path: ':covId/:serviceType', element: <ServicesPage /> },
             {
-              path: ":covId/:serviceType/:serviceName",
+              path: ':covId/:serviceType/:serviceName',
               element: <SubServicesPage />,
             },
             {
-              path: ":covId/:serviceType/:serviceName/:subserviceDetails",
+              path: ':covId/:serviceType/:serviceName/:subserviceDetails',
               element: <DetailsPage />,
             },
           ],
@@ -68,13 +65,13 @@ export default function Router() {
       ],
     },
     {
-      path: "/welcome",
+      path: '/welcome',
       element: <RootLayout />,
       errorElement: <ErrorPage />,
       loader: unauthLoader,
       children: [
-        { index: true, element: <StartPage /> },
-        { path: "login", element: <LoginPage /> },
+        { index: true, element: <LandingPage /> },
+        { path: 'login', element: <LoginPage /> },
       ],
     },
   ]);

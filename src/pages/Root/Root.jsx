@@ -1,19 +1,19 @@
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
-import { useMutation } from "@tanstack/react-query";
-import { Outlet, useLocation } from "react-router-dom";
+import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
+import { useMutation } from '@tanstack/react-query';
+import { Outlet, useLocation } from 'react-router-dom';
 
-import Footer from "../../components/Footer/Footer.jsx";
-import Header from "../../components/Header/Header.jsx";
-import Modal from "../../components/UI/Modal/Modal.jsx";
-import ScrollToTop from "../../components/ScrollToTop.jsx";
-import SideBar from "../../components/SideBar/SideBar.jsx";
+import Footer from '../../components/Footer/Footer.jsx';
+import Header from '../../components/Header/Header.jsx';
+import Modal from '../../components/UI/Modal/Modal.jsx';
+import ScrollToTop from '../../components/ScrollToTop.jsx';
+import SideBar from '../../components/SideBar/SideBar.jsx';
 
-import { refreshTokens, logout } from "../../store/slices/auth.js";
-import { refreshToken } from "../../util/http/methods/post/refreshToken.js";
+import { refreshTokens, logout } from '../../store/slices/auth.js';
+import { refreshToken } from '../../util/http/methods/post/refreshToken.js';
 
-import "./Root.css";
+import './Root.css';
 
 export default function RootLayout() {
   const dialog = useRef();
@@ -32,20 +32,21 @@ export default function RootLayout() {
     },
   });
 
-  const expires = useSelector((state) => state.auth.expires);
   const sideBarIsOpen = useSelector((state) => state.backdrop.isOpen);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const expiresInMilliseconds = parseInt(expires) * 1000 * 60 - 1000 * 60;
+  // Access Token expires after 30 minutes
+  const expiresInMilliseconds = 29 * 1000 * 60;
 
   useEffect(() => {
-    const refreshToken = localStorage.getItem("refreshToken");
+    const refreshToken = localStorage.getItem('refreshToken');
     if (refreshToken) {
       mutate();
     }
 
     setInterval(() => {
-      const refresh = localStorage.getItem("refreshToken");
+      const refresh = localStorage.getItem('refreshToken');
+
       if (refresh) {
         mutate();
       }
@@ -53,10 +54,12 @@ export default function RootLayout() {
   }, []);
 
   const cssClasses =
-    (sideBarIsOpen ? "active" : "") + (!isAuthenticated ? "hidden" : "");
+    (sideBarIsOpen ? 'active' : '') + (!isAuthenticated ? ' hidden' : '');
 
   return (
     <>
+      <ScrollToTop />
+
       <Modal
         ref={dialog}
         isAlert
@@ -65,18 +68,19 @@ export default function RootLayout() {
           diapatch(logout());
         }}
       >
-        <p>Please click logout and try loging in again</p>
+        <p>Please click logout and try loging in again.</p>
       </Modal>
 
-      <ScrollToTop />
       <Header />
+
       {isAuthenticated && <SideBar />}
+
       <main id="content" className={cssClasses}>
         <motion.div
           key={location.pathname
-            .replace("createServiceOwner", "")
-            .replace("fillUserWallet", "")
-            .replace("/addService", "")}
+            .replace('createServiceOwner', '')
+            .replace('fillUserWallet', '')
+            .replace('/addService', '')}
           id="root-page"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -85,6 +89,7 @@ export default function RootLayout() {
           <Outlet />
         </motion.div>
       </main>
+
       <Footer />
     </>
   );

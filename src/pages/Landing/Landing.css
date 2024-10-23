@@ -1,0 +1,24 @@
+#our-services h2 {
+  text-align: center;
+  padding: 1rem;
+  font-family: Ubuntu-Bold, sans-serif;
+  background-clip: text;
+  background: var(--linear-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#our-services__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 40rem) {
+  #our-services__list {
+    flex-direction: row;
+  }
+}

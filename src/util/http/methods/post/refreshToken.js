@@ -1,25 +1,21 @@
-import { domain } from "../../http.js";
+import { domain } from '../../http.js';
 
 export async function refreshToken() {
-  const url = domain + "api/Account/RefreshToken";
+  const url = domain + 'api/Account/RefreshToken';
 
-  const token = localStorage.getItem("token");
-  const refreshToken = localStorage.getItem("refreshToken");
-
-  console.log(refreshToken);
+  const token = localStorage.getItem('token');
+  const refreshToken = localStorage.getItem('refreshToken');
 
   const response = await fetch(url, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify({
       refreshToken: refreshToken,
     }),
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
   });
-
-  console.log(response.status);
 
   if (!response.ok) {
     const error = new Error();
