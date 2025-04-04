@@ -28,7 +28,8 @@
 
 .hero__title span {
   background-clip: text;
-  background: url('/syria_flag1.jpg') center / cover no-repeat border-box;
+  /* background: url('/syria_flag1.jpg') center / cover no-repeat border-box; */
+  background: rgb(0, 255, 0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

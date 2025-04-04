@@ -17,6 +17,7 @@ import ServiceTypesPage from '../pages/ServiceTypes/ServiceTypes.jsx';
 import NewOwnerForm from '../components/NewOwnerForm/NewOwnerForm.jsx';
 
 import { authLoader, unauthLoader } from '../util/auth.js';
+import { Suspense } from 'react';
 
 export default function Router() {
   const router = createBrowserRouter([
@@ -28,37 +29,93 @@ export default function Router() {
       children: [
         {
           path: '',
-          element: <HomePage />,
+          element: (
+            <Suspense>
+              <HomePage />
+            </Suspense>
+          ),
           children: [
             {
               path: 'fillUserWallet',
-              element: <FillWallet />,
+              element: (
+                <Suspense>
+                  <FillWallet />,
+                </Suspense>
+              ),
             },
             {
               path: 'createServiceOwner',
-              element: <NewOwnerForm />,
+              element: (
+                <Suspense>
+                  <NewOwnerForm />,
+                </Suspense>
+              ),
             },
             {
               path: 'createServiceOwner/addService',
-              element: <NewService />,
+              element: (
+                <Suspense>
+                  <NewService />,
+                </Suspense>
+              ),
             },
           ],
         },
-        { path: 'statistics', element: <StatisticsPage /> },
+        {
+          path: 'statistics',
+          element: (
+            <Suspense>
+              <StatisticsPage />
+            </Suspense>
+          ),
+        },
         {
           path: 'governorates',
-          element: <GridPage />,
+          element: (
+            <Suspense>
+              <GridPage />
+            </Suspense>
+          ),
           children: [
-            { index: true, element: <GovernoratesPage /> },
-            { path: ':covId', element: <ServiceTypesPage /> },
-            { path: ':covId/:serviceType', element: <ServicesPage /> },
+            {
+              index: true,
+              element: (
+                <Suspense>
+                  <GovernoratesPage />
+                </Suspense>
+              ),
+            },
+            {
+              path: ':covId',
+              element: (
+                <Suspense>
+                  <ServiceTypesPage />
+                </Suspense>
+              ),
+            },
+            {
+              path: ':covId/:serviceType',
+              element: (
+                <Suspense>
+                  <ServicesPage />
+                </Suspense>
+              ),
+            },
             {
               path: ':covId/:serviceType/:serviceName',
-              element: <SubServicesPage />,
+              element: (
+                <Suspense>
+                  <SubServicesPage />
+                </Suspense>
+              ),
             },
             {
               path: ':covId/:serviceType/:serviceName/:subserviceDetails',
-              element: <DetailsPage />,
+              element: (
+                <Suspense>
+                  <DetailsPage />
+                </Suspense>
+              ),
             },
           ],
         },
@@ -70,8 +127,22 @@ export default function Router() {
       errorElement: <ErrorPage />,
       loader: unauthLoader,
       children: [
-        { index: true, element: <LandingPage /> },
-        { path: 'login', element: <LoginPage /> },
+        {
+          index: true,
+          element: (
+            <Suspense>
+              <LandingPage />
+            </Suspense>
+          ),
+        },
+        {
+          path: 'login',
+          element: (
+            <Suspense>
+              <LoginPage />
+            </Suspense>
+          ),
+        },
       ],
     },
   ]);

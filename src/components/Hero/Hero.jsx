@@ -44,7 +44,7 @@ export default function Hero() {
         }}
         className="hero__title"
       >
-        Make Exploring<span>Syria</span>
+        Make Exploring<span> Syria</span>
         <br />
         Easier!
       </motion.h1>

@@ -35,22 +35,24 @@ export default function RootLayout() {
   const sideBarIsOpen = useSelector((state) => state.backdrop.isOpen);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  // Access Token expires after 30 minutes
-  const expiresInMilliseconds = 29 * 1000 * 60;
-
   useEffect(() => {
+    // Access Token expires after 30 minutes
+    const expiresInMilliseconds = 29 * 1000 * 60;
+
     const refreshToken = localStorage.getItem('refreshToken');
     if (refreshToken) {
       mutate();
     }
 
-    setInterval(() => {
+    const tokensInterval = setInterval(() => {
       const refresh = localStorage.getItem('refreshToken');
 
       if (refresh) {
         mutate();
       }
     }, expiresInMilliseconds);
+
+    return () => clearInterval(tokensInterval);
   }, []);
 
   const cssClasses =
