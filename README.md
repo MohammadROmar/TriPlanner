@@ -1,45 +1,43 @@
-# TriPlanner
+# 🗺️ TriPlanner
 
-TriPlanner is a **Syrian Tourism Application**, built to **make exploring Syria easier** by allowing the tourist to reserve hotel rooms and cars and signup for trips.
-
-> This is the admin application. The admin can add service owners, add or remove services, preview services' statistics and much more!
-
-## Technologies:
-
-- React.js.
-- CSS for styling.
+**TriPlanner** is a **Syrian Tourism Administration Platform**.  
+This Admin Web App allows authorized admins to manage tourism services, owners, statistics, and governorate-based services.
 
 ---
 
-### Features:
+## 🛠️ Technologies
 
-- Authentication and Authorization.
-- Protected routes.
-- Light & Dark mode.
-- react-router-dom - routing.
-- Readux Toolkit - app-wide state.
-- Tanstack Query - data fetching and mutating.
-- Framer Motion - animation.
-- Recharts - statistics and charts.
-
----
-
-##### Backend
-
-ASP.NET Core
-
-You can download and preview backend code [here](https://github.com/Loukas135/TripPlannerClean).
+- **React.js**
+- **React Router DOM** – routing
+- **Redux Toolkit** – state management
+- **TanStack Query** – data fetching & mutating
+- **Framer Motion** – animations
+- **Recharts** – charts & analytics
+- **i18next** – localization
+- **Swiper** – sliders
+- **UUID** – unique identifiers
+- **CSS** – styling
 
 ---
 
-###### More:
+## 🚀 Getting Started
 
-This is a React.js project, so you need to have Node.js & npm installed on your machine if you want to preview it, if you have Node.js & npm installed, run in your terminal:
+### 1. Clone the Repository
 
 ```bash
-  npm install
+git clone https://github.com/MohammadROmar/TriPlanner.git
 
-  npm run dev
+cd TriPlanner
 ```
 
-to preview the application.
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the Development Server
+
+```bash
+npm run dev
+```
