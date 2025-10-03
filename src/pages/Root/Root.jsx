@@ -2,12 +2,11 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMutation } from '@tanstack/react-query';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 
 import Footer from '../../components/Footer/Footer.jsx';
 import Header from '../../components/Header/Header.jsx';
 import Modal from '../../components/UI/Modal/Modal.jsx';
-import ScrollToTop from '../../components/ScrollToTop.jsx';
 import SideBar from '../../components/SideBar/SideBar.jsx';
 
 import { refreshTokens, logout } from '../../store/slices/auth.js';
@@ -60,7 +59,7 @@ export default function RootLayout() {
 
   return (
     <>
-      <ScrollToTop />
+      <ScrollRestoration />
 
       <Modal
         ref={dialog}

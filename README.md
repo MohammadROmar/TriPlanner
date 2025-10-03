@@ -8,19 +8,20 @@ This Admin Web App allows authorized admins to manage tourism services, owners, 
 ## 🛠️ Technologies
 
 - **React.js**
+- **CSS**
 - **React Router DOM** – routing
 - **Redux Toolkit** – state management
 - **TanStack Query** – data fetching & mutating
 - **Framer Motion** – animations
 - **Recharts** – charts & analytics
-- **i18next** – localization
-- **Swiper** – sliders
 - **UUID** – unique identifiers
-- **CSS** – styling
 
 ---
 
-## 🚀 Getting Started
+## 📦 Installation
+
+This project uses **Vite** as its build tool.  
+Make sure you have **Node.js** and **npm** installed.
 
 ### 1. Clone the Repository
 

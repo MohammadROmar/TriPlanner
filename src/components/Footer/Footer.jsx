@@ -1,11 +1,11 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-import AnimatedListItem from "../UI/Motion/AnimatedListItem.jsx";
-import WhatsappIcon from "../../assets/icons/Whatsapp.jsx";
-import TelegramIcon from "../../assets/icons/Telegram.jsx";
-import FacebookIcon from "../../assets/icons/Facebook.jsx";
+import AnimatedListItem from '../UI/Motion/AnimatedListItem.jsx';
+import WhatsappIcon from '../../assets/icons/Whatsapp.jsx';
+import TelegramIcon from '../../assets/icons/Telegram.jsx';
+import FacebookIcon from '../../assets/icons/Facebook.jsx';
 
-import "./Footer.css";
+import './Footer.css';
 
 const animation = { scale: 1, opacity: 1 };
 
@@ -17,7 +17,7 @@ export default function Footer() {
       id="footer"
       style={
         !isAuthenticated
-          ? { gridColumnStart: "1", gridColumnEnd: "-1" }
+          ? { gridColumnStart: '1', gridColumnEnd: '-1' }
           : undefined
       }
     >
@@ -40,7 +40,6 @@ export default function Footer() {
           </a>
         </AnimatedListItem>
       </ul>
-      <p className="danger">Report an issue.</p>
       <h4>TriPlanner&trade;</h4>
     </footer>
   );
